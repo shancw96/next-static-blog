@@ -2,6 +2,7 @@ import DateFormatter from './date-formatter'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import PostBody from './post-body'
 type Props = {
   title: string
   date: string
@@ -25,7 +26,7 @@ const PostPreview = ({
       <div className="text-lg mb-4">
         <DateFormatter dateString={date} />
       </div>
-        <ReactMarkdown children={excerpt} remarkPlugins={[remarkGfm]} />
+      <PostBody content={excerpt} />
     </div>
   )
 }

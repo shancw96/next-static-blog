@@ -5,7 +5,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // import { ghcolors as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
 // import { materialDark as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
 // import { pojoaque as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { prism as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+// import { prism as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { synthwave84 as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 type Props = {
   content: string;
 };
