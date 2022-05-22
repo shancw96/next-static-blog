@@ -1,18 +1,44 @@
-import markdownStyles from './markdown-styles.module.css'
-
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// import { dracula as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
+// import { ghcolors as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
+// import { materialDark as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
+// import { pojoaque as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { prism as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 type Props = {
-  content: string
-}
+  content: string;
+};
 
 const PostBody = ({ content }: Props) => {
   return (
-    <div className="max-w-2xl mx-auto">
-      <div
-        className={markdownStyles['markdown']}
-        dangerouslySetInnerHTML={{ __html: content }}
+    <>
+      <ReactMarkdown
+        children={content}
+        remarkPlugins={[remarkGfm]}
+        components={{
+          code({node, inline, className, children, ...props}) {
+            const match = /language-(\w+)/.exec(className || '')
+            return !inline && match ? (
+              <SyntaxHighlighter
+                children={String(children).replace(/\n$/, '')}
+                // @ts-ignore
+                style={style}
+                language={match[1]}
+                PreTag="div"
+                {...props}
+              />
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            )
+          }
+        }}
       />
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default PostBody
+export default PostBody;
+

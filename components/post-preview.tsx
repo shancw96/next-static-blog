@@ -1,9 +1,7 @@
-import Avatar from './avatar'
 import DateFormatter from './date-formatter'
-import CoverImage from './cover-image'
 import Link from 'next/link'
-import Author from '../types/author'
-
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 type Props = {
   title: string
   date: string
@@ -27,7 +25,7 @@ const PostPreview = ({
       <div className="text-lg mb-4">
         <DateFormatter dateString={date} />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt ?? 'TODO: <!--more-->'}</p>
+        <ReactMarkdown children={excerpt} remarkPlugins={[remarkGfm]} />
     </div>
   )
 }

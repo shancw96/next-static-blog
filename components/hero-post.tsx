@@ -1,7 +1,7 @@
-import Avatar from './avatar'
+
 import DateFormatter from './date-formatter'
 import Link from 'next/link'
-import Author from '../types/author'
+import ReactMarkdown from 'react-markdown'
 
 type Props = {
   title: string
@@ -30,7 +30,8 @@ const HeroPost = ({
           </div>
         </div>
         <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt ?? 'TODO: <!--more-->'}</p>
+          <ReactMarkdown children={excerpt} remarkPlugins={[]} />
+          {/* <p className="text-lg leading-relaxed mb-4">{excerpt ?? 'TODO: <!--more-->'}</p> */}
         </div>
       </div>
     </section>
