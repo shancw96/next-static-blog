@@ -1,9 +1,5 @@
 本项目基础模版基于[next.js - example - react-blog](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)
 
-主体流程如下：
-
-![image-20220522140535508](https://blog.shancw.net/public/uploads/image-20220522140535508.png)
-
 技术栈：
 
 - Next：基于 React 的 web framework，对于本项目来说，SEO 友好支持非常重要
