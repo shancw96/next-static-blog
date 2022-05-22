@@ -1,35 +1,29 @@
-# A statically generated blog example using Next.js, Markdown, and TypeScript
+本项目基础模版基于[next.js - example - react-blog](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)
 
-This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) plus TypeScript.
+主体流程如下：
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using Markdown files as the data source.
+![image-20220522140535508](https://blog.shancw.net/public/uploads/image-20220522140535508.png)
 
-The blog posts are stored in `/_posts` as Markdown files with front matter support. Adding a new Markdown file in there will create a new blog post.
+技术栈：
 
-To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) and [`remark-html`](https://github.com/remarkjs/remark-html) to convert the Markdown files into an HTML string, and then send it down as a prop to the page. The metadata of every post is handled by [`gray-matter`](https://github.com/jonschlinkert/gray-matter) and also sent in props to the page.
+- Next：基于 React 的 web framework，对于本项目来说，SEO 友好支持非常重要
+- react-markdown：markdown 渲染
+- lunr.js：基于浏览器环境的静态搜索工具
+- tailwindcss: 后续将替换成 chakraUI
 
-## Deploy your own
+目标：实现 hexo-next 主题的风格，简单化，可配置。
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/blog-starter-typescript)
+已完成：
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript&project-name=blog-starter-typescript&repository-name=blog-starter-typescript)
+- 兼容 hexo 的写法，markdown 的 metadata 渲染
 
-## How to use
+* 增加 阅读更多`<!--more-->`写法支持
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+未完成：
 
-```bash
-npx create-next-app --example blog-starter-typescript blog-starter-typescript-app
-# or
-yarn create next-app --example blog-starter-typescript blog-starter-typescript-app
-# or
-pnpm create next-app -- --example blog-starter-typescript blog-starter-typescript-app
-```
-
-Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-# Notes
-
-`blog-starter-typescript` uses [Tailwind CSS](https://tailwindcss.com) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3).
+- 增加文章权重，排序置顶
+- 替换 tailwindcss 为 chakraUI
+- 替换核心渲染工具为 react-markdown
+- 首页重构，增加分页功能
+- 增加搜索功能 - lunr.js
+- 增加目录归档页面
