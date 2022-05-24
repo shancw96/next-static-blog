@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import PostBody from './post-body'
+import { Box, Center, Flex, Heading, Link as CLink, Text } from '@chakra-ui/react'
 type Props = {
   title: string
   date: string
@@ -17,17 +18,19 @@ const PostPreview = ({
   slug,
 }: Props) => {
   return (
-    <div>
-      <h3 className="text-3xl mb-3 leading-snug">
+    <Box w="100%">
+      <Heading>
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a className="hover:underline">{title}</a>
+          <CLink>
+          {title}
+          </CLink>
         </Link>
-      </h3>
-      <div className="text-lg mb-4">
-        <DateFormatter dateString={date} />
-      </div>
+      </Heading>
+      <Text color={'GrayText'}>
+        {date}
+      </Text>
       <PostBody content={excerpt} />
-    </div>
+    </Box>
   )
 }
 

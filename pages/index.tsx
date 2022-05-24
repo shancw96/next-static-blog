@@ -1,10 +1,10 @@
 import Container from '../components/container'
-import MoreStories from '../components/more-stories'
 import Layout from '../components/layout'
 import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
 import Post from '../types/post'
+import PostPreview from '../components/post-preview'
+import { VStack } from '@chakra-ui/react'
 
 type Props = {
   allPosts: Post[]
@@ -17,9 +17,19 @@ const Index = ({ allPosts }: Props) => {
         <Head>
           <title>ShanCW tech blog</title>
         </Head>
-        <Container>
-          {<MoreStories posts={allPosts} />}
-        </Container>
+        <VStack w="60%" mx="auto" spacing={'10'}>
+          {
+            allPosts.map((post) => (
+              <PostPreview
+                key={post.slug}
+                title={post.title}
+                date={post.date}
+                slug={post.slug}
+                excerpt={post.excerpt}
+              />
+            ))
+          }
+        </VStack>
       </Layout>
     </>
   )

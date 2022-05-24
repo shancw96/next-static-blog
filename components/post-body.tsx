@@ -7,37 +7,39 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // import { pojoaque as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
 // import { prism as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { synthwave84 as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import markdownStyle from '../lib/markdown-styles.module.scss'
+import githubStyle from '../lib/github-styles.module.scss'
 type Props = {
   content: string;
 };
 
 const PostBody = ({ content }: Props) => {
   return (
-    <>
-      <ReactMarkdown
-        children={content}
-        remarkPlugins={[remarkGfm]}
-        components={{
-          code({node, inline, className, children, ...props}) {
-            const match = /language-(\w+)/.exec(className || '')
-            return !inline && match ? (
-              <SyntaxHighlighter
-                children={String(children).replace(/\n$/, '')}
-                // @ts-ignore
-                style={style}
-                language={match[1]}
-                PreTag="div"
-                {...props}
-              />
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
-            )
-          }
-        }}
-      />
-    </>
+    <ReactMarkdown
+      className={githubStyle.markdownStyle}
+      children={content}
+      remarkPlugins={[remarkGfm]}
+      components={{
+        code({node, inline, className, children, ...props}) {
+          const match = /language-(\w+)/.exec(className || '')
+          console.log(className)
+          return !inline && match ? (
+            <SyntaxHighlighter
+              children={String(children).replace(/\n$/, '')}
+              // @ts-ignore
+              style={style}
+              language={match ? match[1] : 'text'}
+              PreTag="div"
+              {...props}
+            />
+          ) : (
+            <code {...props}>
+              {children}
+            </code>
+          )
+        }
+      }}
+    />
   );
 };
 

@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
-import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import Layout from '../../components/layout'
 import { getPostBySlug, getAllPosts } from '../../lib/api'
@@ -10,7 +9,8 @@ import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import PostType from '../../types/post'
-
+import markdownToHtml from '../../lib/markdownToHtml'
+import { Box } from '@chakra-ui/react'
 type Props = {
   post: PostType
   morePosts: PostType[]
@@ -24,7 +24,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
   }
   return (
     <Layout preview={preview}>
-      <Container>
+      <Box w="60%" mx="auto" >
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -42,7 +42,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
             <PostBody content={post.content} />
           </>
         )}
-      </Container>
+      </Box>
     </Layout>
   )
 }
@@ -71,6 +71,7 @@ export async function getStaticProps({ params }: Params) {
     props: {
       post: {
         ...post,
+        // content: content
       },
     },
   }

@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import Footer from './footer'
 import Meta from './meta'
 
@@ -10,9 +11,7 @@ const Layout = ({ preview, children }: Props) => {
   return (
     <>
       <Meta />
-      <div className="min-h-screen">
-        <main>{children}</main>
-      </div>
+      <Box>{children}</Box>
       <Footer />
     </>
   )
