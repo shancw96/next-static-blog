@@ -88,7 +88,7 @@ const highlightAndCut = curry((content: string, text: string) => {
   const getAllIndexes = getIndicesOf(text, content);
   const firstIndex = getAllIndexes[0];
   const lastIndex = getAllIndexes[getAllIndexes.length - 1];
-  const regexp = new RegExp(`(${text})`, "g");
+  const regexp = new RegExp(`(${text})`, "ig");
   if (firstIndex === lastIndex) {
     return content
       ?.substring(firstIndex - 100, firstIndex + 100)
