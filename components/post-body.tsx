@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from 'rehype-raw'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // import { dracula as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
 // import { ghcolors as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -19,10 +20,10 @@ const PostBody = ({ content }: Props) => {
       className={githubStyle.markdownStyle}
       children={content}
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
       components={{
         code({node, inline, className, children, ...props}) {
           const match = /language-(\w+)/.exec(className || '')
-          console.log(className)
           return !inline && match ? (
             <SyntaxHighlighter
               children={String(children).replace(/\n$/, '')}
