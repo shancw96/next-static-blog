@@ -26,7 +26,8 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
       items[field] = realSlug
     }
     if (field === 'content') {
-      items[field] = content
+      // regexp remove <!--more--> 
+      items[field] = content.replace(/<!--\s*more\s*-->/g, '')
     }
     if (field === 'excerpt') {
       // regexp remove <!--more--> and everything after it
