@@ -3,9 +3,11 @@
 技术栈：
 
 - Next：基于 React 的 web framework，对于本项目来说，SEO 友好支持非常重要
+- React(Hook version)
+- Typescript
 - react-markdown：markdown 渲染
-- lunr.js：基于浏览器环境的静态搜索工具
-- tailwindcss: 后续将替换成 chakraUI
+- flexSearch：静态搜索library
+- ChakraUI
 
 目标：实现 hexo-next 主题的风格，简单化，可配置。
 
