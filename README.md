@@ -14,12 +14,11 @@
 - 兼容 hexo 的写法，markdown 的 metadata 渲染
 
 * 增加 阅读更多`<!--more-->`写法支持
-
+- 替换 tailwindcss 为 chakraUI
+- 替换核心渲染工具为 react-markdown
+- 增加搜索功能 - flexSearch
 未完成：
 
 - 增加文章权重，排序置顶
-- 替换 tailwindcss 为 chakraUI
-- 替换核心渲染工具为 react-markdown
 - 首页重构，增加分页功能
-- 增加搜索功能 - lunr.js
 - 增加目录归档页面
