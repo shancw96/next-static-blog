@@ -55,7 +55,7 @@ export function SearchSuggestion({ documents }: Props) {
     <Box pos="relative">
       <Input
         placeholder="请输入关键词搜索"
-        onKeyDown={(e) => {
+        onKeyDown={(e: any) => {
           e.key === "Enter" && onSearch(e.target.value);
         }}
         onBlur={(e) => {
@@ -124,5 +124,5 @@ const highlightAndCut = curry((content: string, text: string) => {
 function wrapWithEllipse(text: string) {
   return `...${text}...`
 }
-
+// @ts-ignore
 const highlightSnippets = (content: string, text: string) => compose(wrapWithEllipse, highlightAndCut(content))(text);
