@@ -3,15 +3,23 @@ import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import Post from "../types/post";
 import PostPreview from "../components/post-preview";
-import { VStack } from "@chakra-ui/react";
-import { createContext } from "react";
+import { Box, Divider, useMediaQuery, VStack } from "@chakra-ui/react";
+import { createContext, useMemo } from "react";
 import { SearchSuggestion } from "../components/SearchSuggest";
+import { useHotKey } from "../hooks/useHotKey";
 
 type Props = {
   allPosts: Post[];
 };
 export const PostContext = createContext<Post[]>([]);
 const Index = ({ allPosts }: Props) => {
+  const [isPortable] = useMediaQuery('(min-width: 1280px)')
+  useHotKey('ctrl+shift+m', () => {
+    console.log('trigger ctrl+shift+m')
+  });
+  useHotKey('ctrl + k', () => {
+    console.log('trigger ctrl+k')
+  });
   return (
     <PostContext.Provider value={allPosts}>
       <Layout>
@@ -21,15 +29,18 @@ const Index = ({ allPosts }: Props) => {
         <SearchSuggestion
           documents={allPosts}
         />
-        <VStack w="60%" mx="auto" spacing={"10"}>
+        <VStack w={isPortable ? '60%' : '100%'} mx={isPortable ? 'auto' : '2'} spacing={"10"}>
           {allPosts.map((post) => (
-            <PostPreview
-              key={post.slug}
-              title={post.title}
-              date={post.date}
-              slug={post.slug}
-              excerpt={post.excerpt}
-            />
+            <Box w="100%">
+              <PostPreview
+                key={post.slug}
+                title={post.title}
+                date={post.date}
+                slug={post.slug}
+                excerpt={post.excerpt}
+              />
+              <Divider my="10" />
+            </Box>
           ))}
         </VStack>
       </Layout>

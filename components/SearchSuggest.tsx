@@ -1,9 +1,18 @@
-import { Link as CLink, Box, Heading, Input, VStack, Text, Divider } from "@chakra-ui/react";
+import {
+  Link as CLink,
+  Box,
+  Heading,
+  Input,
+  VStack,
+  Text,
+  Divider,
+} from "@chakra-ui/react";
 import FlexSearch from "flexsearch";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import PostType from "../types/post";
-import {compose, curry, pipe} from 'ramda'
+import { compose, curry, pipe } from "ramda";
+import { Mask } from "./mask";
 type Props = {
   documents: PostType[];
 };
@@ -11,16 +20,15 @@ type Props = {
 function SearchOption({ content, title, slug }: PostType) {
   return (
     <>
-    <Box w="100%">
-      <Heading size={"md"} textAlign="left">
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <CLink>{title}</CLink>
-        </Link>
-      </Heading>
-      <Text noOfLines={2} dangerouslySetInnerHTML={{ __html: content }} />
-    </Box>
+      <Box w="100%">
+        <Heading size={"md"} textAlign="left">
+          <Link as={`/posts/${slug}`} href="/posts/[slug]">
+            <CLink>{title}</CLink>
+          </Link>
+        </Heading>
+        <Text noOfLines={2} dangerouslySetInnerHTML={{ __html: content }} />
+      </Box>
     </>
-    
   );
 }
 
@@ -38,6 +46,7 @@ export function SearchSuggestion({ documents }: Props) {
     setIndex(index);
   }, []);
 
+  const [keyword, setKeyword] = useState<string>("");
   const onSearch = (keyword: string) => {
     const results = index?.search(keyword, 25, { suggest: true });
     setOptions(
@@ -51,18 +60,40 @@ export function SearchSuggestion({ documents }: Props) {
         })
     );
   };
+  const onClear = () => {
+    setOptions([]);
+    setKeyword("");
+  };
   return (
     <Box pos="relative">
       <Input
         placeholder="请输入关键词搜索"
+        onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={(e: any) => {
           e.key === "Enter" && onSearch(e.target.value);
+          setKeyword(e.target.value);
         }}
-        onBlur={(e) => {
-          onSearch('');
-        }}
+        value={keyword}
       />
-      {options?.length ? (
+      <Mask visible={!!options?.length} onPress={onClear}>
+        <VStack
+          w="95%"
+          maxH="80vh"
+          overflow={"scroll"}
+          spacing={6}
+          pos="absolute"
+          zIndex={2}
+          bgColor="white"
+          p="10"
+          borderBottomRadius={"2xl"}
+          boxShadow={"dark-lg"}
+        >
+          {options.map((option) => (
+            <SearchOption {...option} />
+          ))}
+        </VStack>
+      </Mask>
+      {/* {options?.length ? <Mask>
         <VStack
           spacing={6}
           pos="absolute"
@@ -77,9 +108,7 @@ export function SearchSuggestion({ documents }: Props) {
             <SearchOption {...option} />
           ))}
         </VStack>
-      ) : (
-        <></>
-      )}
+      </Mask> : null} */}
     </Box>
   );
 }
@@ -122,7 +151,8 @@ const highlightAndCut = curry((content: string, text: string) => {
 });
 
 function wrapWithEllipse(text: string) {
-  return `...${text}...`
+  return `...${text}...`;
 }
 // @ts-ignore
-const highlightSnippets = (content: string, text: string) => compose(wrapWithEllipse, highlightAndCut(content))(text);
+const highlightSnippets = (content: string, text: string) =>
+  compose(wrapWithEllipse, highlightAndCut(content))(text);
