@@ -1,4 +1,4 @@
-本项目基础模版基于[next.js - example - react-blog](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)
+本项目灵感来源[next.js - example - react-blog](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)
 
 技术栈：
 
@@ -22,7 +22,9 @@
 
 
 未完成：
-
+- 优化内容页样式，增加移动端适配
 - 增加文章权重，排序置顶
-- 首页重构，增加分页功能
+- 列表分页功能
 - 增加目录归档页面
+- 夜览模式
+- dockerilze
