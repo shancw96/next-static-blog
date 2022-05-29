@@ -6,7 +6,7 @@
 - React(Hook version)
 - Typescript
 - react-markdown：markdown 渲染
-- flexSearch：静态搜索library
+- flexSearch：静态搜索 library
 - ChakraUI
 
 目标：实现 hexo-next 主题的风格，简单化，可配置。
@@ -16,15 +16,19 @@
 - 兼容 hexo 的写法，markdown 的 metadata 渲染
 
 * 增加 阅读更多`<!--more-->`写法支持
+
 - 替换 tailwindcss 为 chakraUI
 - 替换核心渲染工具为 react-markdown
 - 增加搜索功能 - flexSearch
 
+* 使用 useReducer 代替 redux 实现状态管理
+
+- 增加目录归档页面
 
 未完成：
+
 - 优化内容页样式，增加移动端适配
 - 增加文章权重，排序置顶
 - 列表分页功能
-- 增加目录归档页面
 - 夜览模式
 - dockerilze
