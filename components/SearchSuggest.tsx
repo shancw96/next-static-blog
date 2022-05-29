@@ -93,22 +93,6 @@ export function SearchSuggestion({ documents }: Props) {
           ))}
         </VStack>
       </Mask>
-      {/* {options?.length ? <Mask>
-        <VStack
-          spacing={6}
-          pos="absolute"
-          zIndex={2}
-          bgColor="gray.200"
-          p="10"
-          borderEndRadius={"2xl"}
-          mx="5"
-          boxShadow={"dark-lg"}
-        >
-          {options.map((option) => (
-            <SearchOption {...option} />
-          ))}
-        </VStack>
-      </Mask> : null} */}
     </Box>
   );
 }
