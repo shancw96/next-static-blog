@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout, { ThemeContext } from "../components/layout";
 import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import Post from "../types/post";
@@ -8,25 +8,33 @@ import { StoreContext } from "../lib/store";
 import { useContext, useEffect } from "react";
 import { StoreActionType } from "../lib/store/reducer";
 import AboutAuthor from "../components/AboutAuthor";
+import { SearchSuggestion } from "../components/SearchSuggest";
 
 type Props = {
   allPosts: Post[];
 };
 const Index = ({ allPosts }: Props) => {
   const [isPortable] = useMediaQuery('(min-width: 1280px)')
-  const [store, dispatch] = useContext(StoreContext)
+  const [store, dispatch] = useContext(StoreContext);
+  // const { isPortable }: ThemeContext = useContext(ThemeContext);
 
   useEffect(() => {
-    dispatch({type: StoreActionType.SET_POSTS, payload: allPosts})
-  }, [])
-  
+    dispatch({ type: StoreActionType.SET_POSTS, payload: allPosts });
+  }, []);
+
   return (
     <Layout>
       <Head>
         <title>ShanCW tech blog</title>
       </Head>
-      <AboutAuthor py="10" title={'shancw'} description={'deeper is better'} />
-      <VStack w={isPortable ? '60%' : '100%'} mx={isPortable ? 'auto' : '2'} spacing={"10"}>
+      {!isPortable && <SearchSuggestion documents={allPosts} />}
+      <AboutAuthor py="10" title={"shancw"} description={"deeper is better"} />
+
+      <VStack
+        w={isPortable ? "60%" : "100%"}
+        mx={isPortable ? "auto" : "2"}
+        spacing={"10"}
+      >
         {allPosts.map((post) => (
           <Box w="100%">
             <PostPreview
@@ -54,7 +62,7 @@ export const getStaticProps = async () => {
     "categories",
     "tags",
     "excerpt",
-    "content"
+    "content",
   ]);
 
   return {
