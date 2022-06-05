@@ -119,9 +119,9 @@ const highlightAndCut = curry((content: string, text: string) => {
     if (searchStrLen == 0) {
       return [];
     }
-    let startIndex = 0,
-      index,
-      indices = [];
+    let startIndex = 0
+    let index: number;
+    const indices: number[] = [];
     if (!caseSensitive) {
       str = str.toLowerCase();
       searchStr = searchStr.toLowerCase();
@@ -137,6 +137,7 @@ const highlightAndCut = curry((content: string, text: string) => {
 function wrapWithEllipse(text: string) {
   return `...${text}...`;
 }
-// @ts-ignore
+
 const highlightSnippets = (content: string, text: string) =>
+// @ts-ignore
   compose(wrapWithEllipse, highlightAndCut(content))(text);

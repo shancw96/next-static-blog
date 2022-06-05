@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { StoreContext } from ".";
 
-// type selector= (state: T) => any;
 export function useSelector<TState, Selected>(selector: (state: TState) => Selected): Selected {
-  const [store, dispatch] = useContext(StoreContext);
+  const [store, dispatch] = useContext(StoreContext) as [unknown, unknown];
   return selector(store as TState);
 }
