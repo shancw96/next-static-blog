@@ -4,11 +4,10 @@ import Head from "next/head";
 import Post from "../types/post";
 import PostPreview from "../components/post-preview";
 import { Box, Divider, useMediaQuery, VStack } from "@chakra-ui/react";
-import { SearchSuggestion } from "../components/SearchSuggest";
-import { useHotKey } from "../hooks/useHotKey";
 import { StoreContext } from "../lib/store";
 import { useContext, useEffect } from "react";
 import { StoreActionType } from "../lib/store/reducer";
+import AboutAuthor from "../components/AboutAuthor";
 
 type Props = {
   allPosts: Post[];
@@ -21,20 +20,12 @@ const Index = ({ allPosts }: Props) => {
     dispatch({type: StoreActionType.SET_POSTS, payload: allPosts})
   }, [])
   
-  useHotKey('ctrl+shift+m', () => {
-    console.log('trigger ctrl+shift+m')
-  });
-  useHotKey('ctrl + k', () => {
-    console.log('trigger ctrl+k')
-  });
   return (
     <Layout>
       <Head>
         <title>ShanCW tech blog</title>
       </Head>
-      <SearchSuggestion
-        documents={allPosts}
-      />
+      <AboutAuthor py="10" title={'shancw'} description={'deeper is better'} />
       <VStack w={isPortable ? '60%' : '100%'} mx={isPortable ? 'auto' : '2'} spacing={"10"}>
         {allPosts.map((post) => (
           <Box w="100%">

@@ -9,10 +9,11 @@ import {
 } from "@chakra-ui/react";
 import FlexSearch from "flexsearch";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PostType from "../types/post";
 import { compose, curry, pipe } from "ramda";
 import { Mask } from "./mask";
+import { useHotKey } from "../hooks/useHotKey";
 type Props = {
   documents: PostType[];
 };
@@ -26,7 +27,7 @@ function SearchOption({ content, title, slug }: PostType) {
             <CLink>{title}</CLink>
           </Link>
         </Heading>
-        <Text noOfLines={2} dangerouslySetInnerHTML={{ __html: content }} />
+        <Text noOfLines={5} dangerouslySetInnerHTML={{ __html: content }} />
       </Box>
     </>
   );
@@ -35,6 +36,7 @@ function SearchOption({ content, title, slug }: PostType) {
 export function SearchSuggestion({ documents }: Props) {
   const [index, setIndex] = useState<FlexSearch.Index>();
   const [options, setOptions] = useState<PostType[]>([]);
+  const inputRef = useRef<HTMLInputElement>();
   useEffect(() => {
     const index = new FlexSearch.Index({
       tokenize: "reverse",
@@ -64,12 +66,19 @@ export function SearchSuggestion({ documents }: Props) {
     setOptions([]);
     setKeyword("");
   };
+  useHotKey('ctrl+shift+k', () => {
+    inputRef.current?.focus();
+  })
   return (
     <Box pos="relative">
       <Input
-        placeholder="请输入关键词搜索"
+        // @ts-ignore
+        ref={inputRef}
+        color={'gray'}
+        placeholder="ctrl+shift+k 聚焦，回车搜索"
         onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={(e: any) => {
+          console.log(e)
           e.key === "Enter" && onSearch(e.target.value);
           setKeyword(e.target.value);
         }}
@@ -77,14 +86,17 @@ export function SearchSuggestion({ documents }: Props) {
       />
       <Mask visible={!!options?.length} onPress={onClear}>
         <VStack
-          w="95%"
+          w="100%"
           maxH="80vh"
-          overflow={"scroll"}
+          overflowY={"scroll"}
+          overflowX={"hidden"}
           spacing={6}
           pos="absolute"
+          right={'0%'}
           zIndex={2}
           bgColor="white"
-          p="10"
+          px="5"
+          py="6"
           borderBottomRadius={"2xl"}
           boxShadow={"dark-lg"}
         >
