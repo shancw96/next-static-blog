@@ -4,8 +4,8 @@
 
 学习资源推荐：
 
-+ [webpack the confusing parts](https://rajaraodv.medium.com/webpack-the-confusing-parts-58712f8fcad9)
-+ [webpack 官方文档](https://webpack.js.org/guides/getting-started/)
+- [webpack the confusing parts](https://rajaraodv.medium.com/webpack-the-confusing-parts-58712f8fcad9)
+- [webpack 官方文档](https://webpack.js.org/guides/getting-started/)
 
 <!--more-->
 
@@ -37,15 +37,11 @@ module.exports = {
 
 Loader: 在**bundle** 生成之前或期间 调用，对文件进行操作
 
-plugin: 在**bundle**生成之后，操作**chunk**或 **bundle**，对其进行进一步的组织，优化。plugin可以注册hook到webpack的构建过程中，甚至可以修改compiler，决定最终的编译内容。
+plugin: 在**bundle**生成之后，操作**chunk**或 **bundle**，对其进行进一步的组织，优化。plugin 可以注册 hook 到 webpack 的构建过程中，甚至可以修改 compiler，决定最终的编译内容。
 
+plugin and Loader workflow:
 
-
-plugin and Loader workflow: 
-
-![Plugin and Loader WorkFlow](https://blog.shancw.net/public/uploads/P7hTM.png)
-
-
+![Plugin and Loader WorkFlow](http://serial.limiaomiao.site:8089/public/uploads/P7hTM.png)
 
 ## Asset Management (loaders)
 
@@ -53,173 +49,157 @@ plugin and Loader workflow:
 
 ### [Loading Css](https://webpack.js.org/guides/asset-management/#loading-css)
 
-在js 中引入css，需要在 module [configuration](https://webpack.js.org/configuration/module):中 使用 `style-loader` 和 `css-loader`
+在 js 中引入 css，需要在 module [configuration](https://webpack.js.org/configuration/module):中 使用 `style-loader` 和 `css-loader`
 
-> + style-loader: Inject CSS into the DOM.
-> +  `css-loader` : interprets `@import` and `url()` like `import/require()` and will resolve them.
+> - style-loader: Inject CSS into the DOM.
+> - `css-loader` : interprets `@import` and `url()` like `import/require()` and will resolve them.
 
 ```js
- const path = require('path');
+const path = require("path");
 
- module.exports = {
-   entry: './src/index.js',
-   output: {
-     filename: 'bundle.js',
-     path: path.resolve(__dirname, 'dist'),
-   },
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
- };
+};
 ```
 
-`module loader` 的加载顺序是从前往后的，第一个加载的loader会将它的结果（经过它转换的）传递给下一个loader。类似于 `Ramda.pipe`
+`module loader` 的加载顺序是从前往后的，第一个加载的 loader 会将它的结果（经过它转换的）传递给下一个 loader。类似于 `Ramda.pipe`
 
-上述loader 的执行顺序为 `style-loader` -> `css-loader`
+上述 loader 的执行顺序为 `style-loader` -> `css-loader`
 
-> webpack 使用正则表达式，来决定哪些文件应该被加载到对应的loader中
-
-
+> webpack 使用正则表达式，来决定哪些文件应该被加载到对应的 loader 中
 
 ### [Loading Images & Fonts](https://webpack.js.org/guides/asset-management/#loading-images)
 
-实现js,css文件中导入背景图，icon等图片资源。使用内置的 [Asset Modules](https://webpack.js.org/guides/asset-modules/) 即可
+实现 js,css 文件中导入背景图，icon 等图片资源。使用内置的 [Asset Modules](https://webpack.js.org/guides/asset-modules/) 即可
 
-实现css文件中导入字体资源。使用内置的 [Asset Modules](https://webpack.js.org/guides/asset-modules/) 即可
+实现 css 文件中导入字体资源。使用内置的 [Asset Modules](https://webpack.js.org/guides/asset-modules/) 即可
 
 ```js
- const path = require('path');
+const path = require("path");
 
- module.exports = {
-   entry: './src/index.js',
-   output: {
-     filename: 'bundle.js',
-     path: path.resolve(__dirname, 'dist'),
-   },
-   module: {
-     rules: [
-       {
-         test: /\.css$/i,
-         use: ['style-loader', 'css-loader'],
-       },
-       // 图片资源
-        {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
-        },
-       // 字体资源
-       {
-          test: /\.(woff|woff2|eot|ttf|otf)$/i,
-          type: 'asset/resource',
-        },
-     ],
-   },
- };
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      // 图片资源
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      // 字体资源
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+      },
+    ],
+  },
+};
 ```
 
-注意此处的顺序，image loader 加载完图片资源，css-loader 加载css（此处可能会出现 css中定义背景图 `url('./my-image.png'）`)，style-loader 将最终的css资源加载到dom
+注意此处的顺序，image loader 加载完图片资源，css-loader 加载 css（此处可能会出现 css 中定义背景图 `url('./my-image.png'）`)，style-loader 将最终的 css 资源加载到 dom
 
-
-
- [html-loader](https://webpack.js.org/loaders/html-loader) 对 `<img src="./my-image.png" />` 标签的加载过程，和style-loader类似。
-
-
+[html-loader](https://webpack.js.org/loaders/html-loader) 对 `<img src="./my-image.png" />` 标签的加载过程，和 style-loader 类似。
 
 ### [Load Json like Data(xml,csv)](https://webpack.js.org/guides/asset-management/#loading-data)
 
 `csv-loader`, `xml-loader`
 
 ```js
- const path = require('path');
+const path = require("path");
 
- module.exports = {
-   entry: './src/index.js',
-   output: {
-     filename: 'bundle.js',
-     path: path.resolve(__dirname, 'dist'),
-   },
-   module: {
-     rules: [
-       {
-         test: /\.css$/i,
-         use: ['style-loader', 'css-loader'],
-       },
-       {
-         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-         type: 'asset/resource',
-       },
-       {
-         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-         type: 'asset/resource',
-       },
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+      },
       {
         test: /\.(csv|tsv)$/i,
-        use: ['csv-loader'],
+        use: ["csv-loader"],
       },
       {
         test: /\.xml$/i,
-        use: ['xml-loader'],
+        use: ["xml-loader"],
       },
-     ],
-   },
- };
+    ],
+  },
+};
 ```
-
-
 
 ## [Output Management(plugins)](https://webpack.js.org/guides/output-management/)
 
-available plugins: 
+available plugins:
 
-+ [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin): 自动创建HTML files 入口文件为 `webpack` bundles 服务
-
-
+- [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin): 自动创建 HTML files 入口文件为 `webpack` bundles 服务
 
 ### HtmlWebpackPlugin 配置
 
 ```js
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
- module.exports = {
-   entry: {
-     index: './src/index.js',
-     print: './src/print.js',
-   },
+module.exports = {
+  entry: {
+    index: "./src/index.js",
+    print: "./src/print.js",
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Output Management',
+      title: "Output Management",
     }),
   ],
-   output: {
-     filename: '[name].bundle.js',
-     path: path.resolve(__dirname, 'dist'),
-     // Cleaning up the /dist folder
-     clean: true,
-   },
- };
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    // Cleaning up the /dist folder
+    clean: true,
+  },
+};
 ```
-
-
-
-
 
 ## Development
 
-
-
 ### SourceMap
 
-webpack bundle 开发源码后，对于报错很难定位准确位置。为了解决这个问题，更好的定位error，JS 提供了source Map。sourceMap可以让我们从compiled code 找到源码所在位置。
+webpack bundle 开发源码后，对于报错很难定位准确位置。为了解决这个问题，更好的定位 error，JS 提供了 source Map。sourceMap 可以让我们从 compiled code 找到源码所在位置。
 
-> sourceMap的深入了解：[introduction-source-map](https://blog.teamtreehouse.com/introduction-source-maps)
+> sourceMap 的深入了解：[introduction-source-map](https://blog.teamtreehouse.com/introduction-source-maps)
 
-Webpack的配置方式 `webpack.config.js`
+Webpack 的配置方式 `webpack.config.js`
 
 ```js
  const path = require('path');
@@ -234,20 +214,18 @@ Webpack的配置方式 `webpack.config.js`
  };
 ```
 
-sourceMap的常用可选项：
+sourceMap 的常用可选项：
 
-+ inline-source-map: 不创建独立的sourceMap文件
+- inline-source-map: 不创建独立的 sourceMap 文件
 
-+ eval-source-map：为每个module创建一个sourceMap，推荐在开发中使用
-+ hidden-source-map: 一般用于错误收集
+- eval-source-map：为每个 module 创建一个 sourceMap，推荐在开发中使用
+- hidden-source-map: 一般用于错误收集
 
-> **不同的sourceMap 选项会影响编译速度**， sourceMap 全部可选项参考: [webpack doc - devtool](https://webpack.js.org/configuration/devtool/)
-
-
+> **不同的 sourceMap 选项会影响编译速度**， sourceMap 全部可选项参考: [webpack doc - devtool](https://webpack.js.org/configuration/devtool/)
 
 ### Using Webpack-dev-server(host your web file)
 
->  提供web服务以及热更新
+> 提供 web 服务以及热更新
 
 配置方式:
 
@@ -255,24 +233,22 @@ sourceMap的常用可选项：
 npm install --save-dev webpack-dev-server
 ```
 
-
-
 webpack.config.js
 
 ```js
- module.exports = {
-	  mode: 'development',
-    devServer: {
-      static: './dist',
-    },
-   // The optimization.runtimeChunk: 'single' was added 
-   // because in this example we have more than one entrypoint on a single HTML page. 
-   // Without this, we could get into trouble described here. 
-   // Read the Code Splitting chapter for more details.
-  	optimization: {
-    	runtimeChunk: 'single',
-  	},
- };
+module.exports = {
+  mode: "development",
+  devServer: {
+    static: "./dist",
+  },
+  // The optimization.runtimeChunk: 'single' was added
+  // because in this example we have more than one entrypoint on a single HTML page.
+  // Without this, we could get into trouble described here.
+  // Read the Code Splitting chapter for more details.
+  optimization: {
+    runtimeChunk: "single",
+  },
+};
 ```
 
 package.json
@@ -286,13 +262,11 @@ package.json
 }
 ```
 
-
-
 ### webpack-dev-middleware
 
-webpack-dev-middleware  可以将webpack 打包后的文件，发送给web服务。webpack-dev-server 内部就是调用了这个工具。
+webpack-dev-middleware 可以将 webpack 打包后的文件，发送给 web 服务。webpack-dev-server 内部就是调用了这个工具。
 
-这个工具可以独立于webpack-dev-server使用，比如nodejs web静态服务中使用例子如下：
+这个工具可以独立于 webpack-dev-server 使用，比如 nodejs web 静态服务中使用例子如下：
 
 ```js
 const path = require('path');
@@ -319,12 +293,12 @@ const path = require('path');
 `server.js`
 
 ```js
-const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
+const express = require("express");
+const webpack = require("webpack");
+const webpackDevMiddleware = require("webpack-dev-middleware");
 
 const app = express();
-const config = require('./webpack.config.js');
+const config = require("./webpack.config.js");
 const compiler = webpack(config);
 
 // Tell express to use the webpack-dev-middleware and use the webpack.config.js
@@ -337,21 +311,19 @@ app.use(
 
 // Serve the files on port 3000.
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!\n');
+  console.log("Example app listening on port 3000!\n");
 });
 ```
-
-
 
 ## Code Splitting（代码分离）
 
 代码分离的三种常用方式
 
-+ entry point: 使用entry 配置手动分离代码
-+ prevent duplicate： 使用[Entry dependencies](https://webpack.js.org/configuration/entry-context/#dependencies)  或者 SplitChunksPlugin 去重并分离chunk
-+ 动态导入：在js 模块中，通过inline function import 动态导入
+- entry point: 使用 entry 配置手动分离代码
+- prevent duplicate： 使用[Entry dependencies](https://webpack.js.org/configuration/entry-context/#dependencies) 或者 SplitChunksPlugin 去重并分离 chunk
+- 动态导入：在 js 模块中，通过 inline function import 动态导入
 
-### entry point  
+### entry point
 
 ```diff
  module.exports = {
@@ -371,14 +343,14 @@ app.listen(3000, function () {
 
 entry 的缺点：
 
-+ 如果入口 chunk 之间包含一些重复的模块，那些重复模块都会被引入到各个 bundle 中
-+ 不够灵活，并且不能动态地将核心应用程序逻辑中的代码拆分出来。
+- 如果入口 chunk 之间包含一些重复的模块，那些重复模块都会被引入到各个 bundle 中
+- 不够灵活，并且不能动态地将核心应用程序逻辑中的代码拆分出来。
 
 ### 预防重复
 
 #### 优化 entry point 的依赖
 
-通过depnedOn 选项，不同chunks之间可以共享modules，属于对entry point的优化
+通过 depnedOn 选项，不同 chunks 之间可以共享 modules，属于对 entry point 的优化
 
 ```diff
  const path = require('path');
@@ -410,9 +382,9 @@ entry 的缺点：
  };
 ```
 
-#### splitChunksPlugin: 处理chunk 解决重复
+#### splitChunksPlugin: 处理 chunk 解决重复
 
-splitChunksPlugin 可以将公共依赖提取到已有的入口chunk或者全新的chunk中。
+splitChunksPlugin 可以将公共依赖提取到已有的入口 chunk 或者全新的 chunk 中。
 
 ```diff
   const path = require('path');
@@ -474,12 +446,12 @@ prefetch 的简单示例中，有一个 `HomePage` 组件，其内部渲染一�
 
 ```js
 //...
-import(/* webpackPrefetch: true */ './path/to/LoginModal.js');
+import(/* webpackPrefetch: true */ "./path/to/LoginModal.js");
 ```
 
 这会生成 `<link rel="prefetch" href="login-modal-chunk.js">` 并追加到页面头部，指示着浏览器在**闲置时间预取** `login-modal-chunk.js` 文件。
 
-- [<link rel="prefetch/preload />  in webpack](https://medium.com/webpack/link-rel-prefetch-preload-in-webpack-51a52358f84c)
+- [<link rel="prefetch/preload /> in webpack](https://medium.com/webpack/link-rel-prefetch-preload-in-webpack-51a52358f84c)
 
 - [Preload, Prefetch And Priorities in Chrome](https://medium.com/reloading/preload-prefetch-and-priorities-in-chrome-776165961bbf)
 - [Preloading content with ](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)

@@ -127,13 +127,13 @@ shancw.color === "black"; // -> true
 
 默认情况下，.prototype 原型对象会自动获得 constructor，指向构造函数。如上述例子，Person.prototype.constructor === Person。
 
-<img src="https://blog.shancw.net/public/uploads/image-20220420193933397.png" alt="image-20220420193933397"  />
+<img src="http://serial.limiaomiao.site:8089/public/uploads/image-20220420193933397.png" alt="image-20220420193933397"  />
 
 #### [[prototype]] 属性
 
 每次调用构造函数创建一个新的实例，这个实例内部的[[prototype]]指针就会被赋值给构造函数的原型对象。这个属性是内置属性，外部无法获取。但是 Firefox,Safari,Chrome 会在每个对象上暴露 `__proto__`，通过这个属性，可以访问到对象的原型
 
-![image-20220420200850513](https://blog.shancw.net/public/uploads/image-20220420200850513.png)
+![image-20220420200850513](http://serial.limiaomiao.site:8089/public/uploads/image-20220420200850513.png)
 
 ### 执行上下文和作用域
 

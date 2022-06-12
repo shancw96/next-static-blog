@@ -12,7 +12,7 @@ date: 2022/6/12
 
 主体流程如下：
 
-![image-20220522140535508](https://blog.shancw.net/public/uploads/image-20220522140535508.png)
+![image-20220522140535508](http://serial.limiaomiao.site:8089/public/uploads/image-20220522140535508.png)
 
 技术栈：
 
@@ -41,7 +41,7 @@ date: 2022/6/12
 
 react-blog workflow 如下所示：
 
-![image-20220522141900955](https://blog.shancw.net/public/uploads/image-20220522141900955.png)
+![image-20220522141900955](http://serial.limiaomiao.site:8089/public/uploads/image-20220522141900955.png)
 
 我们需要对 getPostBySlug 进行重构，增加 hexo 的 metadata 风格, hexo 的常用 metadata 如下：
 
@@ -56,7 +56,7 @@ date: 2021/6/23
 
 pages/index.tsx
 
-![image-20220522142744639](https://blog.shancw.net/public/uploads/image-20220522142744639.png)
+![image-20220522142744639](http://serial.limiaomiao.site:8089/public/uploads/image-20220522142744639.png)
 
 getAllPosts 为 HeroPost, PostPreview 提供了数据来源,我们需要对其进行修改
 
