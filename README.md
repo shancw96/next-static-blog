@@ -24,6 +24,9 @@
 
 未完成：
 
+- 文章增加第三方评论功能
+- nodejs 发送邮箱功能
+- 图片懒加载 + 图片压缩
 - docker热更新- https://dev.to/kumareth/next-js-docker-made-easy-2bok
 - 增加文章权重，排序置顶
 - 列表分页功能
