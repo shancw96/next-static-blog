@@ -25,10 +25,13 @@
 
 - 增加目录归档页面
 
+- dockerilze
+
 未完成：
 
-- 优化内容页样式，增加移动端适配
+- docker热更新- https://dev.to/kumareth/next-js-docker-made-easy-2bok
 - 增加文章权重，排序置顶
 - 列表分页功能
-- 夜览模式
-- dockerilze
+- 侧边栏增加tag列表
+- 文章增加目录，增加锚点定位
+
