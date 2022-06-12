@@ -8,13 +8,21 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import PostType from '../../types/post'
 import { Box, Heading } from '@chakra-ui/react'
+import { useContext, useEffect } from 'react'
+import { StoreContext } from '../../lib/store'
+import { StoreActionType } from '../../lib/store/reducer'
 type Props = {
   post: PostType
-  morePosts: PostType[]
+  morePosts: PostType[],
+  allPosts: PostType[],
 }
 
-const Post = ({ post }: Props) => {
+const Post = ({ post, allPosts }: Props) => {
   const router = useRouter()
+  const [store, dispatch] = useContext(StoreContext);
+  useEffect(() => {
+    dispatch({ type: StoreActionType.SET_POSTS, payload: allPosts });
+  }, []);
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
@@ -51,6 +59,15 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
+  const allPosts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "categories",
+    "tags",
+    "excerpt",
+    "content",
+  ]);
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -62,7 +79,8 @@ export async function getStaticProps({ params }: Params) {
   ])
   return {
     props: {
-      post
+      post,
+      allPosts
     },
   }
 }
