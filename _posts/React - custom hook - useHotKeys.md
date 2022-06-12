@@ -12,6 +12,8 @@ date: 2022/5/30
 
 react 自定义 hook，实现浏览器监听特定组合按键，比如 `ctrl+ m`, `ctrl + k + j + a + b`，0 依赖。点击[在线预览: codesandbox](https://codesandbox.io/s/chakraui-ts-components-forked-iy9nkq?file=/src/index.tsx)
 
+<!-- more -->
+
 ## 使用：
 
 ```js

@@ -1,13 +1,13 @@
 import Container from './container'
-import { EXAMPLE_PATH } from '../lib/constants'
+import { Center } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200">
+    <Center>
       <Container>
         Made By Shancw
       </Container>
-    </footer>
+    </Center>
   )
 }
 
