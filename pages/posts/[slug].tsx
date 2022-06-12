@@ -7,7 +7,7 @@ import { getPostBySlug, getAllPosts } from '../../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import PostType from '../../types/post'
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Heading, useMediaQuery } from '@chakra-ui/react'
 import { useContext, useEffect } from 'react'
 import { StoreContext } from '../../lib/store'
 import { StoreActionType } from '../../lib/store/reducer'
@@ -20,6 +20,7 @@ type Props = {
 const Post = ({ post, allPosts }: Props) => {
   const router = useRouter()
   const [store, dispatch] = useContext(StoreContext);
+  const [isPortable] = useMediaQuery("(min-width: 1280px)");
   useEffect(() => {
     dispatch({ type: StoreActionType.SET_POSTS, payload: allPosts });
   }, []);
@@ -28,7 +29,7 @@ const Post = ({ post, allPosts }: Props) => {
   }
   return (
     <Layout>
-      <Box w="60%" mx="auto" >
+      <Box w={isPortable ? "60%" : "100%"} mx={isPortable ? "auto" : "2"} >
         {router.isFallback ? (
           <Heading>Loading…</Heading>
         ) : (
