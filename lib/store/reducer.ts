@@ -35,7 +35,7 @@ export const selectTags = (state: Store) => state.posts.map(post => post.tags);
 export const selectCategory = (state: Store): ReturnType<objToArr> => {
   return objToArr(state.posts
     .reduce((categoryDict, curPost) => {
-        curPost.categories.forEach(category => {
+        curPost.categories?.forEach(category => {
           categoryDict[category] = categoryDict[category] ? categoryDict[category] + 1 : 1;
         })
         return categoryDict;
