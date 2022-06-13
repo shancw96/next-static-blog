@@ -1,0 +1,16 @@
+{
+  "id": "3463035",
+  "name": "blog",
+  "font_family": "icon",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6150966",
+      "name": "link",
+      "font_class": "link",
+      "unicode": "e772",
+      "unicode_decimal": 59250
+    }
+  ]
+}
