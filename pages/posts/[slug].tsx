@@ -4,13 +4,12 @@ import PostBody from '../../components/post-body'
 import PostHeader from '../../components/post-header'
 import Layout from '../../components/layout'
 import { getPostBySlug, getAllPosts } from '../../lib/api'
-import Head from 'next/head'
-import { CMS_NAME } from '../../lib/constants'
 import PostType from '../../types/post'
 import { Box, Heading, useMediaQuery } from '@chakra-ui/react'
 import { useContext, useEffect } from 'react'
 import { StoreContext } from '../../lib/store'
 import { StoreActionType } from '../../lib/store/reducer'
+import { BlogSEO } from '../../components/SEO'
 type Props = {
   post: PostType
   morePosts: PostType[],
@@ -34,11 +33,7 @@ const Post = ({ post, allPosts }: Props) => {
           <Heading>Loading…</Heading>
         ) : (
           <>
-            <Head>
-              <title>
-                {post.title} | Next.js Blog Example with {CMS_NAME}
-              </title>
-            </Head>
+            <BlogSEO title={post.title} summary={post.excerpt} date={post.date} url={router.asPath}  />
             <PostHeader
               title={post.title}
               date={post.date}
@@ -73,10 +68,9 @@ export async function getStaticProps({ params }: Params) {
     'title',
     'date',
     'slug',
-    'author',
     'content',
-    'ogImage',
-    'coverImage',
+    "excerpt",
+    "categories",
   ])
   return {
     props: {
