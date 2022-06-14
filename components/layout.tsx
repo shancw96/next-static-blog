@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 import { Category } from "./Category";
 import { Drawer } from "./drawer";
 import Footer from "./footer";
-import Meta from "./meta";
 
 type Props = {
   children: React.ReactNode;
@@ -21,7 +20,6 @@ const Layout = ({ children }: Props) => {
   const [isPortable] = useMediaQuery("(min-width: 1280px)");
   return (
     <ThemeContext.Provider value={{isPortable}}>
-      <Meta />
       <Box pos="relative">
         <Box
           w={isPortable && isOpen ? `calc(100% - 350px);` : "100%"}
