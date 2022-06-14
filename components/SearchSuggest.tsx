@@ -78,7 +78,6 @@ export function SearchSuggestion({ documents }: Props) {
         placeholder="ctrl+shift+k 聚焦，回车搜索"
         onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={(e: any) => {
-          console.log(e)
           e.key === "Enter" && onSearch(e.target.value);
           setKeyword(e.target.value);
         }}

@@ -26,7 +26,6 @@ export function Category() {
     const isSelected = store.filterTagList.some((tag) => {
       return tag === name
     });
-    console.log(store.filterTagList)
     return (
       <Box
         onClick={() => onSelectCategory(name)}
