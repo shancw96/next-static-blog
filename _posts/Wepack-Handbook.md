@@ -1,3 +1,12 @@
+---
+title: webpack - handbook
+categories: [前端]
+tags: [webpack]
+toc: true
+date: 2022/5/20
+---
+
+## Table of Content
 # webpack HandBook - Basic
 
 此文章为[webpack 官方文档](https://webpack.js.org/guides/getting-started/)的学习笔记，从初学者的角度，加了个人理解内容。
@@ -311,7 +320,7 @@ app.use(
 
 // Serve the files on port 3000.
 app.listen(3000, function () {
-  console.log("Example app listening on port 3000!\n");
+  // console.log("Example app listening on port 3000!\n");
 });
 ```
 
