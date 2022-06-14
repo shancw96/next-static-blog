@@ -31,6 +31,7 @@ const Index = ({ allPosts }: Props) => {
   const handlePageClick = (type) => {
     if (type === 'next') setPNum(prev => prev + 1);
     if (type === 'previous') setPNum(prev => prev - 1);
+    window.scrollTo(0, 0);``
   };
 
   return (
