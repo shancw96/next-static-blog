@@ -46,7 +46,7 @@ export function SearchSuggestion({ documents }: Props) {
       index?.add(document.title, document.content);
     });
     setIndex(index);
-  }, []);
+  }, [documents]);
 
   const [keyword, setKeyword] = useState<string>("");
   const onSearch = (keyword: string) => {
