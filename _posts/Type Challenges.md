@@ -6,6 +6,8 @@ toc: true
 date: 2022/5/3
 ---
 
+## Table of Content
+
 Typescript 类型体操，重学 TS
 
 <!-- more -->
