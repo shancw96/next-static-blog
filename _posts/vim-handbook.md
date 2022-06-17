@@ -6,7 +6,9 @@ toc: true
 date: 2022/6/17
 ---
 
+这篇文章介绍了vim vscode 的常用操作
 
+<!-- more -->
 ## 插入：
 
 i 光标前插入
