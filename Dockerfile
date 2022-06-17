@@ -9,6 +9,7 @@ RUN yarn config set registry=https://registry.npmmirror.com \
 
 # Building App
 RUN yarn build
+
 EXPOSE 3000
 
 CMD ["yarn", "start"]
