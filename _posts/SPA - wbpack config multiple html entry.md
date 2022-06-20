@@ -6,7 +6,6 @@ toc: true
 date: 2022/6/17
 ---
 
-## Table of Content
 
 webpack 在前端项目中使用多入口的配置方式
 
@@ -15,6 +14,8 @@ webpack 在前端项目中使用多入口的配置方式
 [源码参考](https://github.com/shancw96/webpack-cli-by-hand/blob/master/webpack.config.js)
 
 [对应commit](https://github.com/shancw96/webpack-cli-by-hand/commit/2d046726ef28ce904980dbc14e39c21fe0f6162a)
+
+## Table of Content
 
 ## Webpack Output介绍
 
