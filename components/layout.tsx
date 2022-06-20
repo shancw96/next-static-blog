@@ -1,4 +1,4 @@
-import { Box, Button, useMediaQuery } from "@chakra-ui/react";
+import { Box, Button, useMediaQuery, Text } from "@chakra-ui/react";
 import { createContext, useState } from "react";
 import { Category } from "./Category";
 import { Drawer } from "./drawer";
@@ -11,16 +11,16 @@ type Props = {
 
 export type ThemeContext = {
   isPortable: boolean;
-}
+};
 
 export const ThemeContext = createContext<ThemeContext>({
-  isPortable: false
+  isPortable: false,
 });
 const Layout = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isPortable] = useMediaQuery("(min-width: 1280px)");
   return (
-    <ThemeContext.Provider value={{isPortable}}>
+    <ThemeContext.Provider value={{ isPortable }}>
       <Meta />
       <Box pos="relative">
         <Box
@@ -34,14 +34,16 @@ const Layout = ({ children }: Props) => {
             <Drawer visible={isOpen}>
               <Category />
             </Drawer>
-            <Button
+            <Text
+              cursor={'pointer'}
+              className={`icon ${!isOpen ? "icon-24px" : "icon-yincangmulu"}`}
               pos="fixed"
+              color={isOpen ? "white" : "black"}
+              fontSize="2xl"
               bottom={10}
               right={10}
               onClick={() => setIsOpen((prev) => !prev)}
-            >
-              {isOpen ? "hide" : "display"}
-            </Button>
+            />
           </>
         )}
       </Box>

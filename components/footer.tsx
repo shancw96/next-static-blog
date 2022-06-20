@@ -3,10 +3,8 @@ import { Center } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
-    <Center>
-      <Container>
+    <Center pos={'fixed'} bottom="2" left="50%" color="gray.500">
         Made By Shancw
-      </Container>
     </Center>
   )
 }

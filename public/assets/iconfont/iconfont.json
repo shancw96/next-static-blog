@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1200187",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "15053896",
+      "name": "菜单",
+      "font_class": "24px",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "22960794",
+      "name": "隐藏目录",
+      "font_class": "yincangmulu",
+      "unicode": "e823",
+      "unicode_decimal": 59427
+    },
+    {
       "icon_id": "6150966",
       "name": "link",
       "font_class": "link",
