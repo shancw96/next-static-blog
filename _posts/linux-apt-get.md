@@ -1,7 +1,7 @@
 ---
 title: apt-get 命令
 categories: [运维]
-tags: [linux]
+tags: [linux, test]
 toc: true
 date: 2021/1/6
 ---

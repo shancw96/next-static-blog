@@ -49,6 +49,7 @@ const Index = ({ allPosts }: Props) => {
         {pagedPosts.map((post) => (
           <Box w="100%">
             <PostPreview
+              tags={post.tags}
               key={post.slug}
               title={post.title}
               date={post.date}

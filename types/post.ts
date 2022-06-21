@@ -6,7 +6,7 @@ type PostType = {
   date: string
   excerpt: string
   content: string
-  tags: string
+  tags: string[]
   categories: string[]
 }
 
