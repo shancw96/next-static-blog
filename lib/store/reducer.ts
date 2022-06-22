@@ -41,12 +41,35 @@ export function reducer(state: Store, { type, payload }: StoreAction): Store {
 }
 
 export const selectPosts = (state: Store) => state.posts;
+// 获取特定分组下的post
 export const selectFilteredPosts = (state: Store) => {
   return state.filterTagList.length ? state.posts.filter(post => {
     return post.categories?.some(category => {
       return state.filterTagList.includes(category);
     })
   }) : state.posts;
+}
+
+// 获取特定分组下的post的标签集合
+type PostTag = {
+  count: number,
+  title: string;
+}
+export const selectFilteredPostTags = (state: Store): PostTag[] => {
+  const posts = selectFilteredPosts(state);
+  const tags = posts.map(post => post.tags).flat(1);
+  return aggregateBySame(tags);
+  function aggregateBySame(tags: string[]): PostTag[] {
+    const dict = tags.reduce((acc, cur) => {
+      acc[cur] = !!acc[cur] ? acc[cur] + 1 : 1;
+      return acc;
+    }, {});
+
+    return Object.keys(dict).map(key => ({
+      count: dict[key],
+      title: key
+    })).sort((tagInfoA, tagInfoB) => tagInfoB.count - tagInfoA.count)
+  }
 }
 export const selectTags = (state: Store) => state.posts.map(post => post.tags);
 export const selectCategory = (state: Store): ReturnType<objToArr> => {

@@ -27,10 +27,12 @@ const Index = ({ allPosts }: Props) => {
   const [store, dispatch] = useContext(StoreContext);
   const router = useRouter();
   useEffect(() => {
-    const { tag } = router.query;
-    const filterPosts = (tag as string)?.length
+    const tags = (router.query.tags as string)?.split(',');
+    const filterPosts = tags
       ? allPosts.filter((post) =>
-          post.tags.some((postTag) => postTag.includes(tag as string))
+          post.tags.some((postTag) => {
+            return tags.some(activeTag => postTag.includes(activeTag))
+          })
         )
       : allPosts;
     dispatch({ type: StoreActionType.SET_POSTS, payload: filterPosts });

@@ -4,8 +4,9 @@ import { memo, useCallback } from "react";
 interface Props {
   title: string
   handleClick?: Function
+  count: number
 }
-function ArticleTag({ title, handleClick }: Props) {
+function ArticleTag({ title, handleClick , count}: Props) {
   const router = useRouter();
   const handleClickTag = useCallback(() => {
     function defaultClick() {
@@ -17,16 +18,19 @@ function ArticleTag({ title, handleClick }: Props) {
       });
     }
     typeof handleClick === 'function' ? handleClick() : defaultClick();
-  }, [title]);
+  }, [title, handleClick]);
   return (
     <Tag
       cursor={"pointer"}
       onClick={handleClickTag}
       size={"md"}
+      m="1"
       variant="outline"
       colorScheme="blue"
     >
-      {title}
+      {
+        !!count ? `${title} ${count}` : title
+      }
     </Tag>
   );
 }
