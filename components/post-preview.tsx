@@ -2,7 +2,6 @@ import Link from "next/link";
 import PostBody from "./post-body";
 import {
   Box,
-  Center,
   Flex,
   Heading,
   HStack,
@@ -10,6 +9,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import Tag from '../components/Tag'
 type Props = {
   title: string;
   date: string;
@@ -28,7 +28,9 @@ const PostPreview = ({ title, date, excerpt, slug, tags }: Props) => {
           </Link>
         </Heading>
         <HStack>
-          {tags?.map((tag) => <Text bgColor={'pink.100'} borderRadius={'md'} px="2" mx="1" cursor="pointer">{tag}</Text>)}
+          {tags?.map((tag) => (
+            <Tag title={tag} />
+          ))}
         </HStack>
         <Text color={"GrayText"}>{date}</Text>
       </VStack>

@@ -3,13 +3,21 @@ import { getAllPosts } from "../lib/api";
 import Head from "next/head";
 import Post from "../types/post";
 import PostPreview from "../components/post-preview";
-import { Box, Button, Divider, HStack, useMediaQuery, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  HStack,
+  useMediaQuery,
+  VStack,
+} from "@chakra-ui/react";
 import { StoreContext } from "../lib/store";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { selectFilteredPosts, StoreActionType } from "../lib/store/reducer";
 import AboutAuthor from "../components/AboutAuthor";
 import { SearchSuggestion } from "../components/SearchSuggest";
 import { useSelector } from "../lib/store/useSelector";
+import { useRouter } from "next/router";
 
 type Props = {
   allPosts: Post[];
@@ -17,9 +25,16 @@ type Props = {
 const Index = ({ allPosts }: Props) => {
   const [isPortable] = useMediaQuery("(min-width: 1280px)");
   const [store, dispatch] = useContext(StoreContext);
+  const router = useRouter();
   useEffect(() => {
-    dispatch({ type: StoreActionType.SET_POSTS, payload: allPosts });
-  }, []);
+    const { tag } = router.query;
+    const filterPosts = (tag as string)?.length
+      ? allPosts.filter((post) =>
+          post.tags.some((postTag) => postTag.includes(tag as string))
+        )
+      : allPosts;
+    dispatch({ type: StoreActionType.SET_POSTS, payload: filterPosts });
+  }, [router]);
 
   const filteredPost = useSelector(selectFilteredPosts);
   const [pNum, setPNum] = useState(0);
@@ -29,9 +44,10 @@ const Index = ({ allPosts }: Props) => {
     return filteredPost.slice(pNum * pageSize, (pNum + 1) * pageSize);
   }, [pNum, pageSize, filteredPost]);
   const handlePageClick = (type) => {
-    if (type === 'next') setPNum(prev => prev + 1);
-    if (type === 'previous') setPNum(prev => prev - 1);
-    window.scrollTo(0, 0);``
+    if (type === "next") setPNum((prev) => prev + 1);
+    if (type === "previous") setPNum((prev) => prev - 1);
+    window.scrollTo(0, 0);
+    ``;
   };
 
   return (
@@ -60,9 +76,9 @@ const Index = ({ allPosts }: Props) => {
           </Box>
         ))}
       </VStack>
-      <HStack w={'100%'} justifyContent='space-between' px="40">
-        <Button onClick={() => handlePageClick('previous')}>上一页</Button>
-        <Button onClick={() => handlePageClick('next')}>下一页</Button>
+      <HStack w={"100%"} justifyContent="space-between" px="40">
+        <Button onClick={() => handlePageClick("previous")}>上一页</Button>
+        <Button onClick={() => handlePageClick("next")}>下一页</Button>
       </HStack>
     </Layout>
   );
