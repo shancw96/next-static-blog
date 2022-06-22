@@ -1,7 +1,7 @@
 ---
 title: 算法-二叉树
 categories: [算法]
-tags: [algorithm, BST]
+tags: [tree，binary-tree, binary-search-tree]
 toc: true
 date: 2020/8/6
 ---

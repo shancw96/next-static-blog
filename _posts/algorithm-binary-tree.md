@@ -1,7 +1,7 @@
 ---
 title: 算法-二叉树-刷题
 categories: [算法]
-tags: [二叉树]
+tags: [tree, binary-tree]
 toc: true
 date: 2021/6/23
 ---

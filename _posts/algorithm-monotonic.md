@@ -1,7 +1,7 @@
 ---
 title: 单调栈，单调队列思想的接触与使用
 categories: [算法]
-tags: []
+tags: [monotonic-stack]
 toc: true
 date: 2021/6/21
 ---

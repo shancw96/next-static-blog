@@ -1,7 +1,7 @@
 ---
 title: 算法-链表-回文链表判断
 categories: [算法]
-tags: [递归, linkedList]
+tags: [recursion, linkedList, singly-linked-list]
 toc: true
 date: 2021/6/13
 ---

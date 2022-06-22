@@ -1,7 +1,7 @@
 ---
 title: 算法 - 二叉堆
 categories: [算法]
-tags: []
+tags: [stack, heap]
 toc: true
 date: 2021/6/20
 ---

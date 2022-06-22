@@ -1,7 +1,7 @@
 ---
 title: 算法 - 回文链表
 categories: [算法]
-tags: [algorithm, linkedList]
+tags: [linked-list, palindrome]
 toc: true
 date: 2020/6/18
 ---

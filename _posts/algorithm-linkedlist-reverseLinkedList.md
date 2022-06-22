@@ -1,7 +1,7 @@
 ---
 title: 算法 - 反转链表
 categories: [算法]
-tags: [linkedList]
+tags: [linked-list]
 toc: true
 date: 2021/6/10
 ---

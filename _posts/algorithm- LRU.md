@@ -1,7 +1,7 @@
 ---
 title: 算法 - LRU
 categories: [算法]
-tags: [algorithm, LRU]
+tags: [LRU]
 toc: true
 date: 2020/6/17
 ---
