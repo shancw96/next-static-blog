@@ -14,23 +14,27 @@
 已完成：
 
 - 兼容 hexo 的写法，markdown 的 metadata 渲染
+
 * 增加 阅读更多`<!--more-->`写法支持
+
 - 替换 tailwindcss 为 chakraUI
 - 替换核心渲染工具为 react-markdown
 - 增加搜索功能 - flexSearch
+
 * 使用 useReducer 代替 redux 实现状态管理
+
 - 增加目录归档页面
 - dockerilze
+- 列表分页功能
+- 侧边栏增加 tag 列表
+- 文章增加目录，增加锚点定位
+- SEO support optimize
 
 未完成：
 
 - 文章增加第三方评论功能
 - nodejs 发送邮箱功能
 - 图片懒加载 + 图片压缩
-- docker热更新- https://dev.to/kumareth/next-js-docker-made-easy-2bok
+- docker 热更新- https://dev.to/kumareth/next-js-docker-made-easy-2bok
 - 增加文章权重，排序置顶
-- 列表分页功能
-- 侧边栏增加tag列表
-- 文章增加目录，增加锚点定位
-- SEO support optimize
-
+- 主题换色
