@@ -4,7 +4,7 @@ import { memo, useCallback } from "react";
 interface Props {
   title: string
   handleClick?: Function
-  count: number
+  count?: number
 }
 function ArticleTag({ title, handleClick , count}: Props) {
   const router = useRouter();
