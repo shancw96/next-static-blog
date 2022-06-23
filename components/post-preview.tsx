@@ -10,6 +10,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Tag from '../components/Tag'
+import { useTagSelectHook } from "../hooks/useTagSelect";
 type Props = {
   title: string;
   date: string;
@@ -19,6 +20,8 @@ type Props = {
 };
 
 const PostPreview = ({ title, date, excerpt, slug, tags }: Props) => {
+  const [tagList, onSelectTag] = useTagSelectHook();
+
   return (
     <Box w="100%">
       <VStack mb="10">
@@ -29,7 +32,11 @@ const PostPreview = ({ title, date, excerpt, slug, tags }: Props) => {
         </Heading>
         <HStack>
           {tags?.map((tag) => (
-            <Tag title={tag} />
+            <Tag 
+              title={tag}
+              handleClick={() => onSelectTag(tag)}
+              isActive={!!tagList?.find(item => item === tag)}
+            />
           ))}
         </HStack>
         <Text color={"GrayText"}>{date}</Text>

@@ -5,17 +5,13 @@ interface Props {
   title: string
   handleClick?: Function
   count?: number
+  isActive?: boolean
 }
-function ArticleTag({ title, handleClick , count}: Props) {
+function ArticleTag({ title, handleClick , count, isActive = false}: Props) {
   const router = useRouter();
   const handleClickTag = useCallback(() => {
     function defaultClick() {
-      router.push({
-        pathname: "/",
-        query: {
-          tag: title,
-        },
-      });
+      // define default click logic here
     }
     typeof handleClick === 'function' ? handleClick() : defaultClick();
   }, [title, handleClick]);
@@ -25,7 +21,7 @@ function ArticleTag({ title, handleClick , count}: Props) {
       onClick={handleClickTag}
       size={"md"}
       m="1"
-      variant="outline"
+      variant={isActive ? 'solid' : 'outline'}
       colorScheme="blue"
     >
       {

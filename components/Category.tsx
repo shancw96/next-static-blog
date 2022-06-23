@@ -2,6 +2,7 @@ import { Box, VStack, Text, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { remove } from "ramda";
 import React, { useContext, useMemo, useState } from "react";
+import { useTagSelectHook } from "../hooks/useTagSelect";
 import { StoreContext } from "../lib/store";
 import {
   selectCategory,
@@ -22,20 +23,7 @@ export function Category() {
   const tags = useSelector(selectFilteredPostTags);
   const [store, dispatch] = useContext(StoreContext);
   const router = useRouter();
-  const tagList = useMemo(() => {
-    return (router.query?.tags as string)?.split(",");
-  }, [router.query]);
-  const onSelectTag = (tag) => {
-    const tagSet = new Set(tagList);
-    tagSet.has(tag) ? tagSet.delete(tag) : tagSet.add(tag);
-    tagSet.delete("")
-    router.push({
-      pathname: "/",
-      query: {
-        tags: Array.from(tagSet).join(","),
-      },
-    });
-  };
+  const [tagList, onSelectTag] = useTagSelectHook();
   const onSelectCategory = (category: string) => {
     dispatch({ type: StoreActionType.SET_FILTER_TAG, payload: category });
     router.push("/");
@@ -64,6 +52,7 @@ export function Category() {
                 handleClick={() => onSelectTag(tag.title)}
                 title={tag.title}
                 count={tag.count}
+                isActive={!!tagList?.find(item => item === tag.title)}
               />
             ))}
         </Flex>
