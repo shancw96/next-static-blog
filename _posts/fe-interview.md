@@ -1,7 +1,7 @@
 ---
 title: 前端面试
-categories: [算法]
-tags: []
+categories: [前端]
+tags: [interview]
 toc: true
 date: 2022/3/11
 top: 1
