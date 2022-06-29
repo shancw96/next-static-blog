@@ -1,7 +1,7 @@
 ---
 title: 算法 - 双指针 - twoSum
 categories: [算法]
-tags: []
+tags: [two-pointers]
 toc: true
 date: 2021/6/15
 ---

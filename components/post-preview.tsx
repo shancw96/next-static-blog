@@ -2,21 +2,26 @@ import Link from "next/link";
 import PostBody from "./post-body";
 import {
   Box,
-  Center,
   Flex,
   Heading,
+  HStack,
   Link as CLink,
   Text,
   VStack,
 } from "@chakra-ui/react";
+import Tag from '../components/Tag'
+import { useTagSelectHook } from "../hooks/useTagSelect";
 type Props = {
   title: string;
   date: string;
   excerpt: string;
   slug: string;
+  tags: string[];
 };
 
-const PostPreview = ({ title, date, excerpt, slug }: Props) => {
+const PostPreview = ({ title, date, excerpt, slug, tags }: Props) => {
+  const [tagList, onSelectTag] = useTagSelectHook();
+
   return (
     <Box w="100%">
       <VStack mb="10">
@@ -25,7 +30,16 @@ const PostPreview = ({ title, date, excerpt, slug }: Props) => {
             <CLink>{title}</CLink>
           </Link>
         </Heading>
-        <Text color={"GrayText"}>发布时间：{date}</Text>
+        <HStack>
+          {tags?.map((tag) => (
+            <Tag 
+              title={tag}
+              handleClick={() => onSelectTag(tag)}
+              isActive={!!tagList?.find(item => item === tag)}
+            />
+          ))}
+        </HStack>
+        <Text color={"GrayText"}>{date}</Text>
       </VStack>
       <PostBody content={excerpt} />
     </Box>

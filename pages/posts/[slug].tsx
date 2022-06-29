@@ -35,6 +35,8 @@ const Post = ({ post, allPosts }: Props) => {
           <>
             <BlogSEO title={post.title} summary={post.excerpt} date={post.date} url={router.asPath}  />
             <PostHeader
+              slug={post.slug}
+              tags={post.tags}
               title={post.title}
               date={post.date}
             />
@@ -71,6 +73,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     "excerpt",
     "categories",
+    'tags',
   ])
   return {
     props: {

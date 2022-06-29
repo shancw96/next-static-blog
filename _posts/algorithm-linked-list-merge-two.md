@@ -1,7 +1,7 @@
 ---
 title: 算法-合并有序链表
 categories: [算法]
-tags: [linkedList]
+tags: [list, linked-list]
 toc: true
 date: 2020/6/22
 ---

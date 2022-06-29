@@ -75,7 +75,8 @@ export function SearchSuggestion({ documents }: Props) {
         // @ts-ignore
         ref={inputRef}
         color={'gray'}
-        placeholder="ctrl+shift+k 聚焦，回车搜索"
+        rounded={'none'}
+        placeholder="ctrl+shift+k"
         onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={(e: any) => {
           e.key === "Enter" && onSearch(e.target.value);

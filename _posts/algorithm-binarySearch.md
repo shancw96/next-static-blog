@@ -1,7 +1,7 @@
 ---
 title: 算法-二分搜索
 categories: [算法]
-tags: [binarySearch]
+tags: [two-pointers]
 toc: true
 date: 2021/6/14
 ---
