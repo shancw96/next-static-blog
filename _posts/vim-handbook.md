@@ -105,11 +105,15 @@ g\_: 移动到行尾 最后一个非空字符
 
   - N 查找上一个
 
-- 替换
+- 替换, replace
 
 ​ `:s/zempty/hansome/g` 当前行 zempty -> handsome
 
 ​ `:%s/zempty/handsome/g` 全文 zempty -> handsome
+
+example1:
+qs: `4 5 20 21 30 31 32 33 34 36 -> 4, 5, 20, 21, 30, 31, 32, 33, 34, 36`
+ans: `:s/(\d+)\w/\1,`
 
 ## operations
 
