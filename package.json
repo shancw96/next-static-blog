@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next-sitemap",
     "build-sitemap": "next-sitemap",
     "start": "next start",
     "typecheck": "tsc"
