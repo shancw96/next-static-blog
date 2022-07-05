@@ -195,7 +195,7 @@ docker.io/library/ubuntu:18.04
     <none>              <none>              00285df0df87        5 days ago          342 MB
     ```
 
-  - 删除无效镜像：`sudo docker rmi $(docker images -f "dangling=true" -q)`
+  - 删除无效镜像：`docker image prune`
 
 ## 使用 Dockerfile 定制镜像
 
