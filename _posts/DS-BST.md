@@ -8,6 +8,8 @@ date: 2022/7/5
 
 这篇文章介绍了数据结构 二叉搜索树及常用 api 的实现
 
+<!-- more -->
+
 ## Table of Content
 
 ## 介绍
@@ -18,8 +20,8 @@ date: 2022/7/5
 
 ## 实现
 
-+ [查看源码 github](https://github.com/shancw96/tech-basis/blob/master/dataStructure/binary-search-tree.ts)
-+ [查看测试用例 github](https://github.com/shancw96/tech-basis/blob/master/test/bst.test.ts)
+- [查看源码 github](https://github.com/shancw96/tech-basis/blob/master/dataStructure/binary-search-tree.ts)
+- [查看测试用例 github](https://github.com/shancw96/tech-basis/blob/master/test/bst.test.ts)
 
 ### 数据结构
 
@@ -73,7 +75,7 @@ class BinarySearchTree {
   2. root 非最小值，访问 root.left，递归进行上述操作
 
 - 如果 node.val > root.val
-  1. root 为最大值：将 root.right指向node
+  1. root 为最大值：将 root.right 指向 node
   2. root 非最大值：访问 root.right，递归进行上述操作
 
 ```typescript
@@ -135,19 +137,21 @@ function searchNode(
    ![image-20220705160452917](http://serial.limiaomiao.site:8089/public/uploads/image-20220705160452917.png)
 
 3. 被删除的节点有两个 child：
+
    1. 找到 Node 右子树 的最小值，将其 val 设置为当前值，并删掉右子树的最小值，我们称之为 minNode，minNode 的删除需要考虑如下两种场景
 
       ![IMG_9B410E00C7E5-1](http://serial.limiaomiao.site:8089/public/uploads/IMG_9B410E00C7E5-1.jpeg)
 
-      + minNode 如果是 leaf Node (33.5)，那么直接删除
+      - minNode 如果是 leaf Node (33.5)，那么直接删除
 
         ![IMG_4D15AB7B7A5F-1](http://serial.limiaomiao.site:8089/public/uploads/IMG_4D15AB7B7A5F-1.jpeg)
 
-        ​	
+        ​
 
-      + minNode(33.5) 如果存在 right child (33.7) , 那么参考第二点，将其 parent 和 其 child 进行连接
+      - minNode(33.5) 如果存在 right child (33.7) , 那么参考第二点，将其 parent 和 其 child 进行连接
 
         ![IMG_655811650F64-1](http://serial.limiaomiao.site:8089/public/uploads/IMG_655811650F64-1.jpeg)
+
    2. 或者 找到 Node 左子树 的最大值，将其 val 设置为当前值，并删掉左子树的最大值
 
 ```typescript
@@ -213,8 +217,6 @@ function searchNode(
     }
   }
 ```
-
-
 
 ## lc-1038:二叉搜索树 -> 累加树
 
