@@ -1,5 +1,5 @@
 import { Box, Button, useMediaQuery, Text } from "@chakra-ui/react";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Category } from "./Category";
 import { Drawer } from "./drawer";
 import Footer from "./footer";
@@ -17,8 +17,9 @@ export const ThemeContext = createContext<ThemeContext>({
   isPortable: false,
 });
 const Layout = ({ children }: Props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  
   const [isPortable] = useMediaQuery("(min-width: 1280px)");
+  const [isOpen, setIsOpen] = useState(isPortable);
   return (
     <ThemeContext.Provider value={{ isPortable }}>
       <Meta />
@@ -29,7 +30,7 @@ const Layout = ({ children }: Props) => {
         >
           {children}
         </Box>
-        {!!isPortable && (
+        (
           <>
             <Drawer visible={isOpen}>
               <Category />
@@ -45,7 +46,7 @@ const Layout = ({ children }: Props) => {
               onClick={() => setIsOpen((prev) => !prev)}
             />
           </>
-        )}
+        )
       </Box>
       <Footer />
     </ThemeContext.Provider>
