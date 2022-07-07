@@ -43,9 +43,16 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items
 }
 
+function isMDNotDraftFile(slug: string) {
+  const isDraft = /^draft_/.test(slug);
+  const isMarkdown = /\.md$/.test(slug);
+  return !isDraft && isMarkdown
+}
+
 export function getAllPosts(fields: (keyof PostType)[] = []) {
   const slugs = getPostSlugs()
   const posts = slugs
+    .filter(isMDNotDraftFile)
     .map((slug) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
     .sort((post1, post2) => (new Date(post1.date) > new Date(post2.date) ? -1 : 1))
