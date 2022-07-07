@@ -109,42 +109,62 @@ export function SearchSuggestion({ documents }: Props) {
   );
 }
 
-const highlightAndCut = curry((content: string, text: string) => {
-  const getAllIndexes = getIndicesOf(text, content);
-  const firstIndex = getAllIndexes[0];
-  const lastIndex = getAllIndexes[getAllIndexes.length - 1];
-  const regexp = new RegExp(`(${text})`, "ig");
-  if (firstIndex === lastIndex) {
-    return content
-      ?.substring(firstIndex - 100, firstIndex + 100)
-      .replace(regexp, `<span style="background: gold">${text}</span>`);
-  } else if (firstIndex < lastIndex) {
-    return content
-      ?.substring(firstIndex - 100, lastIndex + 100)
-      .replace(regexp, `<span style="background: gold">${text}</span>`);
-  } else {
-    return content;
+const highlightSnippetsV2 = curry((content: string, text: string) => {
+  // 获取单词在文章中的边界
+  const getWordsRange = curry((content, textList: string[]) => {
+    const sortedIndexList = textList.map(text => getIndicesOf(text, content)).flat(1).sort((a, b) => a - b);
+    return {
+      min: sortedIndexList[0],
+      max: sortedIndexList[1]
+    }
+    function getIndicesOf(searchStr: string, str: string, caseSensitive = false) {
+      let searchStrLen = searchStr.length;
+      if (searchStrLen == 0) {
+        return [];
+      }
+      let startIndex = 0
+      let index: number;
+      const indices: number[] = [];
+      if (!caseSensitive) {
+        str = str.toLowerCase();
+        searchStr = searchStr.toLowerCase();
+      }
+
+      while ((index = str.indexOf(searchStr, startIndex)) > -1) {
+        indices.push(index);
+        startIndex = index + searchStrLen;
+      }
+      return indices;
+    }
+    
+  })
+  // 剪切
+  const cutContentByRange = curry((content: string, range: {min: number, max: number}) => {
+    return content?.substring(range.min-100, range.max + 100);
+  });
+
+  // 高亮
+  const highlightContentByWords = curry((textList: string[], content: string) => {
+    return textList.reduce((temp, text) => {
+      const regexp = new RegExp(`(${text})`, "ig");
+      return temp.replace(regexp, `<span style="background: gold">${text}</span>`);
+    }, content)
+  })
+
+  function getAllSubStr(textList: string[]) {
+    if (textList.length === 0) return [];
+    let subList = getAllSubStr(textList.slice(1));
+    return join(textList[0], subList).concat(subList)
   }
 
-  function getIndicesOf(searchStr: string, str: string, caseSensitive = false) {
-    let searchStrLen = searchStr.length;
-    if (searchStrLen == 0) {
-      return [];
-    }
-    let startIndex = 0
-    let index: number;
-    const indices: number[] = [];
-    if (!caseSensitive) {
-      str = str.toLowerCase();
-      searchStr = searchStr.toLowerCase();
-    }
-    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
-      indices.push(index);
-      startIndex = index + searchStrLen;
-    }
-    return indices;
+  function join(a: any, list: any[]): any[] {
+    return [a, list.map(item => `${a} ${item}`)].flat(1);
   }
-});
+
+  const textGroup = getAllSubStr(text.split(' '));
+  return pipe(getWordsRange(content), cutContentByRange(content), highlightContentByWords(textGroup))(textGroup);
+})
+
 
 function wrapWithEllipse(text: string) {
   return `...${text}...`;
@@ -152,4 +172,4 @@ function wrapWithEllipse(text: string) {
 
 const highlightSnippets = (content: string, text: string) =>
 // @ts-ignore
-  compose(wrapWithEllipse, highlightAndCut(content))(text);
+  compose(wrapWithEllipse, highlightSnippetsV2(content))(text);
