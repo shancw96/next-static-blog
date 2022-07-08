@@ -29,12 +29,12 @@
 - 侧边栏增加 tag 列表
 - 文章增加目录，增加锚点定位
 - SEO support optimize
+- [图片压缩: 在图床项目中实现](https://github.com/shancw96/pic-server/blob/1532f64ea0ef6f4818bd06761881eb77a3dc13b1/src/controller/file.ts#L24)
 
 未完成：
 
 - 文章增加第三方评论功能
 - nodejs 发送邮箱功能
-- 图片懒加载 + 图片压缩
 - docker 热更新- https://dev.to/kumareth/next-js-docker-made-easy-2bok
 - 增加文章权重，排序置顶
 - 主题换色
