@@ -17,6 +17,7 @@ const CommonSEO = ({ title, description, ogType }) => {
       <meta property="og:description" content={description} />
       <meta property="og:title" content={title} />
       <link rel="canonical" href={`${siteMetadata.siteUrl}${router.asPath}`} />
+      <meta name="google-site-verification" content="9gDU7WGc85oUydwbHiOODfTPuUeHhd9Frgxl1ye7UTc" />
     </Head>
   );
 };

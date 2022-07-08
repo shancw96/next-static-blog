@@ -56,6 +56,7 @@ const Index = ({ allPosts }: Props) => {
     <Layout>
       <Head>
         <title>ShanCW tech blog</title>
+        <meta name="google-site-verification" content="9gDU7WGc85oUydwbHiOODfTPuUeHhd9Frgxl1ye7UTc" />
       </Head>
       {!isPortable && <SearchSuggestion documents={allPosts} />}
       <AboutAuthor py="10" title={"shancw"} description={"deeper is better"} />
