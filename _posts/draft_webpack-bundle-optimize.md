@@ -157,17 +157,67 @@
 
 https://blog.42mate.com/vue-js-bundle-size-and-performance-optimizations-%F0%9F%8F%8E%EF%B8%8F/
 
-+ contextReplacementPlugin
-+ splitChunksPlugin
++ chunk split
 
 
 
 
 
-dayjs 与moment 体积比较
-
-![image-20220712134236821](/Users/wushangcheng/Pictures/Typora/image-20220712134236821.png)
 
 
 
-![image-20220712134225625](/Users/wushangcheng/Pictures/Typora/image-20220712134225625.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
