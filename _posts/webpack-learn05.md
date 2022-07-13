@@ -179,3 +179,86 @@ module.exports = {
   ...
 }
 ```
+
+### 图片压缩
+
+在webpack中对于图片压缩推荐使用plugin 而不是 loader，loader属于build时对chunk进行操作，而plugin是对构建完之后的结果进行二次操作。
+
+对于现有的项目，比如基于vue-cli 或者 CRA(create-react-app)，都对文件资源进行了定制化处理。在这种情况下，随意的添加loader，可能破坏现有的loader chain，导致build 出现问题。
+
+因此，使用plugin 在构建结束后，再进行图片的优化操作，相对来说是比较合适的。
+
+Vue-cli 下的配置方法，考虑到多项目下的通用性质，未使用webpack chain 进行管理。
+
+1. 安装ImageminPlugin
+
+   npm i imagemin-webpack-plugin --save-dev
+
+2. 项目中使用
+
+   vue.config.js
+
+   ```diff
+   const { defineConfig } = require("@vue/cli-service");
+   + const ImageminPlugin = require("imagemin-webpack-plugin").default;
+   module.exports = defineConfig({
+     transpileDependencies: true,
+     lintOnSave: false,
+     devServer: {
+       proxy: {
+         "/photovoltaic": {
+           target: process.env.VUE_API_BASE,
+           // pathRewrite: {
+           //   "^/photovoltaic": process.env.VUE_API_BASE,
+           // },
+         },
+       },
+     },
+     chainWebpack: config => {
+       config.module
+         .rule("vue")
+         .use("vue-loader")
+         .tap(options => {
+           options.compiler = require("vue-template-babel-compiler");
+           return options;
+         });
+     },
+   + configureWebpack: {
+   +   plugins: [
+   +     new ImageminPlugin({
+   +       test: /\.(jpe?g|png|gif|svg)$/i,
+   +       disable: process.env.NODE_ENV !== "production", // Disable during development
+   +       mozjpeg: {
+   +         progressive: true,
+   +       },
+   +       // optipng.enabled: false will disable optipng
+   +       optipng: {
+   +         enabled: false,
+   +       },
+   +       pngquant: {
+   +         quality: "65-85",
+   +         speed: 4,
+   +       },
+   +       gifsicle: {
+   +         interlaced: false,
+   +       },
+   +       // the webp option will enable WEBP
+   +       webp: {
+   +         quality: 75,
+   +       },
+   +     }),
+   +   ],
+   + },
+   });
+   
+   ```
+
+   地址
+
+   + github: [Klathmon/imagemin-webpack-plugin](https://github.com/Klathmon/imagemin-webpack-plugin)
+
+   + github: [imagemin](https://github.com/imagemin/imagemin)
+
+
+
+​	

@@ -89,9 +89,9 @@
    
    ```
 
-+ Image Compression - @squoosh/lib
++ Image Compression 
 
-  
+  + imagemin-webpack-plugin
 
 + Enable code minification
 
