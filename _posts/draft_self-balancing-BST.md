@@ -4,6 +4,43 @@
 
 
 
+自平衡二叉搜索树的具体实现：
+
+1. AVL Tree
+2. Red-Black Tree
+
+
+
+## AVL Tree
+
+AVL 以 **A**delson-**V**elsky and **L**andis 命名，是第一个自平衡二叉搜索树
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 附录

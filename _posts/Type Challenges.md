@@ -187,13 +187,25 @@ type First<T extends unknown[]> = T["length"] extends 0 ? T[0] : never;
   ```typescript
   let vAny: any = 10; // We can assign anything to any
   let vUnknown: unknown = 10; // We can assign anything to unknown just like any
-
+  
   let s1: string = vAny; // Any is assignable to anything
   let s2: string = vUnknown; // Invalid; we can't assign vUnknown to any other type (without an explicit assertion)
-
+  
   vAny.method(); // Ok; anything goes with any
   vUnknown.method(); // Not ok; we don't know anything about this variable
   ```
+
+### [Last Of Array](https://github.com/type-challenges/type-challenges/blob/main/questions/00015-medium-last/README.md)
+
+Implement a generic `Last<T>` that takes an Array `T` and returns its last element.
+
+学习解构赋值在范性中配合infer的使用
+
+参考此处：[inferring within conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#inferring-within-conditional-types)
+
+```typescript
+type Last<T extends any[]> = T extends [...infer arr, infer tail] ? tail : never
+```
 
 ### [MyAwaited](https://github.com/type-challenges/type-challenges/blob/main/questions/00189-easy-awaited/README.md)
 
