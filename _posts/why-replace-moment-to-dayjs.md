@@ -8,4 +8,5 @@
   ![image-20220712135312870](http://serial.limiaomiao.site:8089/public/uploads/image-20220712135312870.png)
   这是个什么概念呢，未经过[tree shaking](https://webpack.js.org/guides/tree-shaking/)的 [lodash](https://bundlephobia.com/package/lodash@4.17.21)压缩后的体积为24.5kb，一个moment是lodash的近3倍
 
-![image-20220712142516987](/Users/wushangcheng/Pictures/Typora/image-20220712142516987.png)
+![image-20220712142516987](http://serial.limiaomiao.site:8089/public/uploads/image-20220712142516987.png)
+
