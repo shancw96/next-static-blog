@@ -1,16 +1,14 @@
 ---
 title: Webpack下项目的优化手段
 categories: [前端]
-tags: [webpack]
+tags: [webpack, webpack-chunk, webpack-compression, webpack-tree-shaking]
 toc: true
 date: 2022/7/18
 ---
 
-这篇文章介绍了webpack 打包时，针对项目提及的优化方案
+这篇文章介绍了webpack 打包时一些优化方案（chunk，压缩，TreeShaking）
 
 <!-- more -->
-
-
 
 ## Table of Content
 
@@ -121,7 +119,9 @@ date: 2022/7/18
 
 ### SplitChunksPlugin
 
-例子： 将每个package 独立拆分成一个bundle
+例子： 将node_modules 下的package 整合成一个chunk
+
+关联阅读 [splitChunksPlugin介绍](http://serial.limiaomiao.site:8088/posts/Webpack-5-Optimization)
 
 ```js
 optimization: {
