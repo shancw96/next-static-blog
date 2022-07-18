@@ -1,3 +1,15 @@
+---
+title: Webpack 项目体积打包优化
+categories: [前端]
+tags: [webpack]
+toc: true
+date: 2022/7/18
+---
+
+这篇文章介绍了webpack 打包时，针对项目提及的优化方案
+
+<!-- more -->
+
 ## Webpack Tree Shaking
 
 1. Using babel-plugin-lodash
@@ -156,68 +168,4 @@
   http://serial.limiaomiao.site:8088/posts/html-script-defer-async
 
 https://blog.42mate.com/vue-js-bundle-size-and-performance-optimizations-%F0%9F%8F%8E%EF%B8%8F/
-
-+ chunk split
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
