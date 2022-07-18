@@ -1,5 +1,5 @@
 ---
-title: Webpack 项目体积打包优化
+title: Webpack下项目的优化手段
 categories: [前端]
 tags: [webpack]
 toc: true
@@ -74,6 +74,8 @@ date: 2022/7/18
 
 因此更好的方式是，在打包的时候，预先打包好gz文件。
 
+###  开启nginx静态gzip 功能
+
 [compression-webpack-plugin](https://www.npmjs.com/package/compression-webpack-plugin)： 本地生成.gz 文件，配合使用nginx 的 gzip_static 命令，让nginx直接读取gz文件，不用实时编译。
 
 配置方式：
@@ -107,13 +109,35 @@ date: 2022/7/18
    
    ```
 
-+ Image Compression 
+### Image Compression 
 
-  + imagemin-webpack-plugin
+[详细步骤参考此处：webpack-文件 --- 指纹，压缩：图片压缩](http://serial.limiaomiao.site:8088/posts/webpack-learn05#%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9)
 
-+ Enable code minification
++ imagemin-webpack-plugin
 
-  set the `mode` flag to production inside your webpack config. The production mode uses UglifyJS to minify your code but it also does some other optimizations like removing development-only code in libraries. 
+## Split chunk
+
+更多的bundle，更多的chunk，意味着更多的请求。在http2 普及之间，过多的bundle拆分，反而会降低页面的响应速度。因此需要根据项目情况去定制调整。
+
+### SplitChunksPlugin
+
+例子： 将每个package 独立拆分成一个bundle
+
+```js
+optimization: {
+  splitChunks: {
+    cacheGroups: {
+      commons: {
+        test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+            chunks: "all"
+      }
+    }
+  }
+}
+```
+
+#### Vue 路由根据模块管理chunk
 
 + Lazy Loading routes
 
@@ -167,11 +191,13 @@ date: 2022/7/18
   };
   ```
 
-+ script
+  
 
-  async, defer
+## script
 
-  http://serial.limiaomiao.site:8088/posts/html-script-defer-async
+错误的使用script 标签，可能会导致首屏加载时间过长，具体参考下文
+
+[html async defer](http://serial.limiaomiao.site:8088/posts/html-script-defer-async)
 
 https://blog.42mate.com/vue-js-bundle-size-and-performance-optimizations-%F0%9F%8F%8E%EF%B8%8F/
 
