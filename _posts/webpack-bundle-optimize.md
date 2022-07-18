@@ -16,11 +16,11 @@ date: 2022/7/18
 
    使用前
 
-   ![image-20220712133123569](/Users/wushangcheng/Pictures/Typora/image-20220712133123569.png)
+   ![image-20220712133123569](http://serial.limiaomiao.site:8089/public/uploads/image-20220712133123569.png)
 
    使用后
 
-   ![image-20220712133308185](/Users/wushangcheng/Pictures/Typora/image-20220712133308185.png)
+   ![image-20220712133308185](http://serial.limiaomiao.site:8089/public/uploads/image-20220712133308185.png)
 
    使用方式：
 
@@ -146,7 +146,7 @@ date: 2022/7/18
 
   如上代码，将theme-setting 下所有的组件，放到theme-setting chunk下，下图是打包后的依赖图
 
-  ![image-20220712143043458](/Users/wushangcheng/Pictures/Typora/image-20220712143043458.png)
+  ![image-20220712143043458](http://serial.limiaomiao.site:8089/public/uploads/image-20220712143043458.png)
 
 + Lazy loading plugins and global components
 
