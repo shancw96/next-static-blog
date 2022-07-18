@@ -6,7 +6,13 @@ toc: true
 date: 2022/7/13
 ---
 
-新项目中，不推荐使用moment 作为时间格式化工具，应该使用类似[dayjs](https://dayjs.gitee.io/docs/zh-CN/display/format) 的新library代替day。原因如下
+
+
+新项目中，不推荐使用moment 作为时间格式化工具，应该使用类似[dayjs](https://dayjs.gitee.io/docs/zh-CN/display/format) 的新library代替day。
+
+<!-- more -->
+
+原因如下
 
 1. moment 项目不再更新，出现问题没有保障
 
