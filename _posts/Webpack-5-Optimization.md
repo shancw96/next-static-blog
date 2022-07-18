@@ -10,7 +10,7 @@ date: 2022/7/18
 
 这篇文章介绍了webpack optimization属性常用的配置，翻译自[webpackDoc: splitchunks](https://webpack.docschina.org/plugins/split-chunks-plugin/#splitchunkscachegroups)
 
-
+<!-- more -->
 
 ## Table of Content
 
