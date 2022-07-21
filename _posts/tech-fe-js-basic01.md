@@ -3,7 +3,7 @@ title: 前端教程 - JS基础part1
 categories: [前端教程]
 tags: []
 toc: true
-date: 2021/6/20
+date: 2022/7/21
 ---
 
 这篇文章是JS基础的第一部分，介绍了let const 和6种基本类型。
