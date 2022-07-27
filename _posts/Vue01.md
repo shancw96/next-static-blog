@@ -14,6 +14,12 @@ date: 2022/7/27
 
 <!--more-->
 
+
+
+## Table of Content
+
+
+
 一个Vue文件，由下面三块内容构成，分别是HTML JS CSS
 
 ![image-20220727104600616](http://serial.limiaomiao.site:8089/public/uploads/image-20220727104600616.png)
@@ -22,7 +28,7 @@ date: 2022/7/27
 
 
 
-## HTML
+## Template
 
 HTML在Vue中的名字为template，意为模版。一个模版只能有一个父元素，参考上图的div。模版有如下语法需要记忆
 
@@ -81,11 +87,11 @@ v-bind 指令可以被简化为
 
 ![image-20220727112702457](http://serial.limiaomiao.site:8089/public/uploads/image-20220727112702457.png)
 
-### Class 于Style 的绑定
+### Class 绑定
 
 
 
-#### class 对象语法
+#### 对象语法
 
 我们可以传给 `v-bind:class` 一个对象，以动态地切换 class：
 
@@ -109,7 +115,7 @@ data: {
 
 当 `isActive` 或者 `hasError` 变化时，class 列表将相应地更新。例如，如果 `hasError` 的值为 `true`，class 列表将变为 `"static active text-danger"`。
 
-### Class的数组语法
+#### 数组语法
 
 我们可以把一个数组传给 `v-bind:class`，以应用一个 class 列表：
 
@@ -142,8 +148,6 @@ data: {
 
 ### Style 语法
 
-
-
 #### 对象语法
 
 v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS property 名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用引号括起来) 来命名：
@@ -167,15 +171,41 @@ data: {
 <div v-bind:style="[baseStyles, overridingStyles]"></div>
 ```
 
+### 条件渲染
+
+条件渲染就是 在template 里使用if 判断，决定是否显示
+
+![image-20220727130609867](http://serial.limiaomiao.site:8089/public/uploads/image-20220727130609867.png)
+
+条件判断有两个 v-if v-show
+
+v-show：https://cn.vuejs.org/v2/guide/conditional.html#v-show
+
+v-if 与 v-show 的区别：https://cn.vuejs.org/v2/guide/conditional.html#v-if-vs-v-show
+
+### v-for 批量生成列表
+
+我们可以用 `v-for` 指令基于一个数组来渲染一个列表。`v-for` 指令需要使用 `item in items` 形式的特殊语法，其中 `items` 是源数据数组，而 `item` 则是被迭代的数组元素的**别名**。
+
+```js
+<ul id="example-1">
+  <li v-for="item in items" :key="item.message">
+    {{ item.message }}
+  </li>
+</ul>
 
 
-条件渲染
+items: [
+  { message: 'Foo' },
+  { message: 'Bar' }
+]
+```
 
-直接看此处文章即可  https://cn.vuejs.org/v2/guide/conditional.html
+![image-20220727131633331](http://serial.limiaomiao.site:8089/public/uploads/image-20220727131633331.png)
 
 ## JS
 
-Vue文件中，JS部分，是Vue 的核心内容。所有的逻辑操作都放在此处。这里介绍了最基本的内容。
+Vue文件中，JS部分，所有的逻辑操作都放在此处。这里介绍了最基本的内容。
 
 + data
 
