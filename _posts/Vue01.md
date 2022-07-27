@@ -207,42 +207,38 @@ items: [
 
 Vue文件中，JS部分，所有的逻辑操作都放在此处。这里介绍了最基本的内容。
 
-+ data
+### data
 
-  在Vue文件中，data的写法比较特殊
+在Vue文件中，data的写法比较特殊
 
-  ```js
-  data() {
-    return {
-   		msg: 'Hello World!'   
-    }
+```js
+data() {
+  return {
+ 		msg: 'Hello World!'   
   }
-  ```
+}
+```
 
-  注意此处的return返回了一个对象，我们所有数据都放在此处
+注意此处的return返回了一个对象，我们所有数据都放在此处
 
-  > 为何使用return 方式，涉及到vue的原理实现，现在不做讨论，这篇文章开头就介绍了怎么用，而不是为什么
+> 为何使用return 方式，涉及到vue的原理实现，现在不做讨论，这篇文章开头就介绍了怎么用，而不是为什么
 
-+ methods
+### methods
 
-  method意为方法，一般配合模版中的事件使用。
+method意为方法，一般配合模版中的事件使用。
 
-+ computed
+![image-20220727132201504](http://serial.limiaomiao.site:8089/public/uploads/image-20220727132201504.png)
 
-  computed 为计算属性，当内部的值发生改变后，computedCount 会自动更新。比如下文，当count 变成1 后，computedCount 会自动变成 2
+### computed
 
-  ```js
-  data() {
-    return {
-      count: 0
-    }
-  }
-  
-  computed: {
-    computedCount() {
-      return count + 1
-    }
-  }
-  ```
+computed 在vue 文档中，意为 自动计算。但我觉得翻译为  自动转换更贴切一些。顾名思义，computed 可以实现将一个 变量转换成另外一个变量
 
-生命周期相关会放在第二篇中，讲解
+![image-20220727132358613](http://serial.limiaomiao.site:8089/public/uploads/image-20220727132358613.png)
+
+比如我们例子中，将一个count转换成了一个字符串。除此之外，我们还可以实现自动求和等等等操作。
+
+
+
+### 生命周期
+
+相关内容会放在第二篇中讲解
