@@ -1,5 +1,5 @@
 ---
-title: 翻译 JavaScript Visualized: Hoisting
+title: 翻译 JavaScript Visualized Hoisting
 categories: [网络]
 tags: [js,hoisting]
 toc: true
