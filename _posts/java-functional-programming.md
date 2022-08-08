@@ -90,7 +90,7 @@ public class FPDemo {
 ## map
 
 map 可以实现 List 的类型转换, 如`[1, 2, 3]` -> `["1", "2", "3"]`
-![](/images/java/stream-map.png)
+![image-20220808160900489](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160900489.png)
 
 ```java
 List.of(1, 2, 3).stream()
@@ -102,9 +102,9 @@ List.of(1, 2, 3).stream()
 
 ## flatMap
 
-将几个小 List 整合成一个大的 List
+将几个小 List 整合成一个大的 List, 可以理解为展平（flat）操作
 
-![](/images/java/stream-flatMap.png)
+![image-20220808160818460](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160818460.png)
 
 ```java
 Stream.of(asList(1, 2, 3), asList(4, 5, 6))
@@ -115,9 +115,9 @@ Stream.of(asList(1, 2, 3), asList(4, 5, 6))
 
 ## filter
 
-过滤操作，将 list 中无用的元素过滤掉
+![image-20220808160844217](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160844217.png)
 
-![](/images/java/stream-filter.png)
+过滤操作，将 list 中无用的元素过滤掉
 
 ```java
 List<String> beginningWithNumbers = Stream.of("a", "1abc", "abc1")
@@ -158,13 +158,15 @@ String tempRet = List.of(1, 2, 3)
 
 容器这个概念，你可能不明白我在说什么，下面介绍下 reduce 的创建过程，看完你就知道什么是容器了
 
+此场景主要出现在 parallel 流操作中
+
 1. 第一个参数，创建容器
-   ![](/images/java/stream-collection-supplier.png)
+   ![image-20220808160142369](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160142369.png)
 2. 第二个参数，负责累加
-   ![](/images/java/stream-collection-accumulator.png)
+   ![image-20220808160212126](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160212126.png)
 
 3. 第三个参数，负责容器间的组合方式
-   ![](/images/java/stream-collection-combiner.png)
+   ![image-20220808160229607](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160229607.png)
 
 # 高阶函数使用
 
@@ -224,7 +226,7 @@ System.out.println(curried.apply("e").apply(27).apply(18)); // -> e2718
 ## 什么是 monad？
 
 monad 的完全定义对我来说是个哲学话题。。。。说的简单点，monad 可以实现将你传入的类型，包裹起来，然后返回给你一个新的容器类型，
-![](/images/java/java-monad.png)
+![image-20220808160707570](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160707570.png)
 
 ## Optional monad 处理 nullPointerException
 
@@ -233,7 +235,6 @@ monad 的完全定义对我来说是个哲学话题。。。。说的简单点�
 下面代码传入一个可能为 null 的值，通过一系列操作后，如果传入的值是 null，就返回 默认值 3
 
 ```java
-
 Integer result = Optional.ofNullable(somethingMightNull)
   .stream()
   /*more operation*/
@@ -305,4 +306,4 @@ public class Main {
 
 - [Java Functional Composition](http://tutorials.jenkov.com/java-functional-programming/functional-composition.html)
 
-* [Write a monad, in Java, seriously?](https://medium.com/swlh/write-a-monad-in-java-seriously-50a9047c9839)
+* [Write a monad, in Java, seriously?](
