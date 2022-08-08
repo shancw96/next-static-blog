@@ -1,5 +1,5 @@
 ---
-title: string通过ascii 生成指定范围的number
+title: ascii 生成指定范围的number
 categories: [前端]
 tags: [implement]
 toc: true
