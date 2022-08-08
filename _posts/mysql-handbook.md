@@ -3,7 +3,7 @@ title: MySQL-handbook
 categories: [数据库]
 tags: [database, mysql]
 toc: true
-date: 2021/4/22
+date: 2022/8/1
 ---
 
 这篇文章覆盖了 mysql 的常用知识，比如常用的语句 Select,Where ，常用的操作符 IN,BETWEEN, AND...常用的连接如 Inner Join, Self Join, 等等等。。。
@@ -180,7 +180,7 @@ Between
 
 ```sql
 select * from customer
-where points between(1000, 3000)
+where points between 1000 and 3000
 ```
 
 ## The LIKE Operator
@@ -288,6 +288,8 @@ select * from customer limit 6, 3 -- offset 6, pick 3
 ```
 
 # Join
+
+inner join 练习：https://sqlbolt.com/lesson/select_queries_with_joins
 
 ## 基本用法
 
