@@ -1,7 +1,7 @@
 ---
 title: webpack - sourceMap & 公共资源提取
 categories: [前端]
-tags: [webpack]
+tags: [webpack, sourceMap, chunk]
 toc: true
 date: 2020/10/7
 ---

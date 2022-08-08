@@ -1,7 +1,7 @@
 ---
 title: webpack - 文件---指纹，压缩
 categories: [前端]
-tags: [webpack]
+tags: [webpack, files, webpack-chunk]
 toc: true
 date: 2020/10/5
 ---
@@ -182,15 +182,15 @@ module.exports = {
 
 ### 图片压缩
 
-在webpack中对于图片压缩推荐使用plugin 而不是 loader，loader属于build时对chunk进行操作，而plugin是对构建完之后的结果进行二次操作。
+在 webpack 中对于图片压缩推荐使用 plugin 而不是 loader，loader 属于 build 时对 chunk 进行操作，而 plugin 是对构建完之后的结果进行二次操作。
 
-对于现有的项目，比如基于vue-cli 或者 CRA(create-react-app)，都对文件资源进行了定制化处理。在这种情况下，随意的添加loader，可能破坏现有的loader chain，导致build 出现问题。
+对于现有的项目，比如基于 vue-cli 或者 CRA(create-react-app)，都对文件资源进行了定制化处理。在这种情况下，随意的添加 loader，可能破坏现有的 loader chain，导致 build 出现问题。
 
-因此，使用plugin 在构建结束后，再进行图片的优化操作，相对来说是比较合适的。
+因此，使用 plugin 在构建结束后，再进行图片的优化操作，相对来说是比较合适的。
 
-Vue-cli 下的配置方法，考虑到多项目下的通用性质，未使用webpack chain 进行管理。
+Vue-cli 下的配置方法，考虑到多项目下的通用性质，未使用 webpack chain 进行管理。
 
-1. 安装ImageminPlugin
+1. 安装 ImageminPlugin
 
    npm i imagemin-webpack-plugin --save-dev
 
@@ -250,15 +250,13 @@ Vue-cli 下的配置方法，考虑到多项目下的通用性质，未使用web
    +   ],
    + },
    });
-   
+
    ```
 
    地址
 
-   + github: [Klathmon/imagemin-webpack-plugin](https://github.com/Klathmon/imagemin-webpack-plugin)
+   - github: [Klathmon/imagemin-webpack-plugin](https://github.com/Klathmon/imagemin-webpack-plugin)
 
-   + github: [imagemin](https://github.com/imagemin/imagemin)
+   - github: [imagemin](https://github.com/imagemin/imagemin)
 
-
-
-​	
+​

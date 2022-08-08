@@ -1,7 +1,7 @@
 ---
 title: 一分钟自建 zerotier-planet 行星服务器
-categories: []
-tags: []
+categories: [杂项]
+tags: [zerotier]
 toc: true
 date: 2022/3/18
 ---

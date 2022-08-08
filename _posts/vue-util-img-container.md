@@ -1,7 +1,7 @@
 ---
 title: vue组件-拖拽，放大缩小，旋转 图片
 categories: [前端]
-tags: [implement]
+tags: [vue, implement]
 toc: true
 date: 2021/1/5
 ---

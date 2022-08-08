@@ -7,6 +7,7 @@ date: 2022/5/20
 ---
 
 ## Table of Content
+
 # webpack HandBook - Basic
 
 此文章为[webpack 官方文档](https://webpack.js.org/guides/getting-started/)的学习笔记，从初学者的角度，加了个人理解内容。
@@ -201,6 +202,7 @@ module.exports = {
 ```
 
 HtmlWebpackPlugin 的应用: [SPA webpack multiple entry](http://serial.limiaomiao.site:8088/posts/SPA%20-%20wbpack%20config%20multiple%20html%20entry)
+
 ## Development
 
 ### SourceMap

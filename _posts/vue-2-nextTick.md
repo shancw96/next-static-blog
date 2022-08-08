@@ -1,7 +1,7 @@
 ---
 title: nextTick深入理解
 categories: [前端]
-tags: [vue, implement]
+tags: [vue, vue-nextTick]
 toc: true
 date: 2021/2/22
 ---

@@ -1,6 +1,6 @@
 ---
 title: Oh My Zsh 常用plugin
-categories: []
+categories: [杂项]
 tags: []
 toc: true
 date: 2022/3/22
