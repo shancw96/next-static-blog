@@ -1,0 +1,79 @@
+{
+  "phone": "18051740886",
+  "email": "shancw1996@gmail.com",
+  "github": "https://github.com/shancw96",
+  "job": "前端工程师",
+  "blog": "https://blog.shancw.net",
+  "introduction": "",
+  "education": {
+    "college": "常州工学院",
+    "major": "物联网（本科）",
+    "period": "2016.09.01 ～ 2020.06.30"
+  },
+  "skills": [
+    {
+      "title": "HTML & CSS",
+      "rank": 3,
+      "description": ""
+    },
+    {
+      "title": "JavaScript",
+      "rank": 5,
+      "description": ""
+    },
+    {
+      "title": "TypeScript",
+      "rank": 3.5,
+      "description": "熟悉typescript，有ts相关项目开发经验"
+    },
+    
+    {
+      "title": "React",
+      "rank": 4,
+      "description": "中型前端项目开发经验，可负责常规前端项目架构实现"
+    },
+    {
+      "title": "Vue",
+      "rank": 4,
+      "description": "中小型前端项目开发经验，可独立完成模块开发"
+    }
+  ],
+  "moreInfo": [
+    "英语CET4（523分）"
+  ],
+  "resumeDetail": [
+    {
+      "company": "师创教育软件技术有限公司",
+      "period": "2019.04 ~ 2019.10",
+      "detail": "前端实习生。使用Vue实现OA办公软件的H5移动端开发"
+    },
+    {
+      "company": "昆山华信（华信富融）",
+      "period": "2020.04 ～ 至今",
+      "detail": "近2年，从一名实习晋升为前端组长。深度参与了新能源相关项目（三峡，光伏建管）的研发，负责整个项目的交付"
+    }
+  ],
+  "projectDetail": [
+    {
+      "title": "资料整编",
+      "role": "前端开发",
+      "desc": "",
+      "job": "",
+      "period": ""
+    },
+    {
+      "title": "三峡 - web某模块",
+      "role": "前端负责人",
+      "desc": "",
+      "job": "",
+      "period": ""
+    },
+    {
+      "title": "光伏项目智慧建设管理平台",
+      "role": "项目负责人",
+      "desc": "",
+      "job": "",
+      "period": ""
+    }
+  ]
+}
