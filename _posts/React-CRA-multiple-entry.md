@@ -3,7 +3,7 @@ title: React multiple entry points
 categories: [前端]
 tags: [react, webpack]
 toc: true
-date: 2020/9/11
+date: 2022/8/11
 ---
 
 如题，本文介绍了 create-react-app 生成的 react 项目，如何在不 eject webpack 的情况下，配置多入口页面。

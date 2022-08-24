@@ -18,7 +18,7 @@ export default function AboutAuthor({title, description, ...rest} : Props & Stac
     <HStack>
       <Link href="/">博客</Link>
       <Text>｜</Text>
-      <Link href="/resume">个人简介</Link>
+      <Link onClick={() => window.open("http://serial.limiaomiao.site:8087")}>个人简介</Link>
     </HStack>
   </VStack>
 }
