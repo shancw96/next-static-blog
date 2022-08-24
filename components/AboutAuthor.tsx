@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Box, Center, StackProps, Text, VStack } from '@chakra-ui/react'
+import { Box, Center, HStack, Link, StackProps, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
 import Tag from './Tag';
 type Props = {
@@ -15,8 +15,10 @@ export default function AboutAuthor({title, description, ...rest} : Props & Stac
   return <VStack {...rest}>
     <Text fontSize={'3xl'} px="12" py="1" bg="black" color="whitesmoke">{title}</Text>
     <Text textColor={'GrayText'}>{description}</Text>
-    {
-      !!activeTag && <Tag title={activeTag} handleClick={cancelTag} />
-    }
+    <HStack>
+      <Link href="/">博客</Link>
+      <Text>｜</Text>
+      <Link href="/resume">个人简介</Link>
+    </HStack>
   </VStack>
 }
