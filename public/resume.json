@@ -8,12 +8,13 @@
     "email": "shancw1996@gmail.com",
     "mobile": "18051740886",
     "github": "https://github.com/shancw96",
-    "workExpYear": "3",
-    "positionTitle": "前端工程师"
+    "workExpYear": "3年",
+    "positionTitle": "前端工程师",
+    "blog": "https://blog.shancw.net"
   },
   "educationList": [
     {
-      "edu_time": ["2016.09.01", "2020.06.30"],
+      "edu_time": ["2016.09", "2020.06.30"],
       "school": "常州工学院",
       "major": "计算机学院 - 物联网专业（本科）",
       "academic_degree": "本科"
@@ -30,10 +31,10 @@
       "company_name": "昆山华信（华信富融）",
       "department_name": "",
       "work_time": ["2020.04", null],
-      "work_desc": "前端实习生。使用 React 参与开发多类产品：数据研发平台、数据决策平台、数据分析平台的研发工作，同时也参与大型 BI 产品的重构工作，有良好的编码习惯。"
+      "work_desc": "近2年，从一名实习晋升为前端组长。深度参与了新能源相关项目（三峡，光伏建管）的研发"
     },
     {
-      "company_name": "数沃信息科技有限公司",
+      "company_name": "师创教育软件技术有限公司",
       "department_name": "",
       "work_time": ["2019.04", "2019.10"],
       "work_desc": "前端实习生。使用Vue实现OA办公软件的H5移动端开发"
@@ -71,8 +72,8 @@
       "project_name": "资料整编",
       "project_role": "前端开发",
       "project_time": "2020.04 ~ 2020.11",
-      "project_desc": "web前端报告生成项目，基于nuxt（vue2全家桶，elementUI，axios...），作为子模块应用在三峡，国电投，等大坝项目中。在线编辑报告，并根据相关大坝数据生成过程线（d3），对大坝工程图纸，进行编辑标记（canvas），从而生成年报，周报，月报word。",
-      "project_content": "实习时负责将此项目集成到其他大坝并修复bug，转正后独立负责工程图纸标记功能开发"
+      "project_desc": "web前端报告生成项目，在线编辑报告，并根据相关大坝数据生成过程线,对大坝工程图纸，进行编辑标记，从而生成年报，周报，月报word。基于nuxt（vue2全家桶，elementUI，axios...），作为子模块应用在三峡，国电投，等大坝项目中。",
+      "project_content": "\n1. 实习时负责将此项目集成到其他大坝并修复bug。\n2. 转正后独立负责工程图纸标记功能开发"
     },
     {
       "project_name": "三峡管理平台 - web某模块",
