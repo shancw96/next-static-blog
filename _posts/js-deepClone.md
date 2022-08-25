@@ -87,7 +87,7 @@ JSON.parse(JSON.stringify(obj));
 
 V8 垃圾回收： 标记清除
 
-
+![3374609593-607f6d095870d](http://serial.limiaomiao.site:8089/public/uploads/3374609593-607f6d095870d.gif)
 
 在递归的方式中，使用 WeakSet 是为了 GC。 `WeakMap` , `WeakSet` 对于值的引用都是不计入垃圾回收机制的。
 
