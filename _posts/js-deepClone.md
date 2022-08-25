@@ -87,7 +87,7 @@ JSON.parse(JSON.stringify(obj));
 
 V8 垃圾回收： 标记清除
 
-![img](https://segmentfault.com/img/bVcRqjF)
+
 
 在递归的方式中，使用 WeakSet 是为了 GC。 `WeakMap` , `WeakSet` 对于值的引用都是不计入垃圾回收机制的。
 
