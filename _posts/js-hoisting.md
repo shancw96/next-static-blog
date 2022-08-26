@@ -1,6 +1,6 @@
 ---
 title: 翻译 JavaScript Visualized Hoisting
-categories: [网络]
+categories: [前端]
 tags: [js,hoisting]
 toc: true
 date: 2022/7/29

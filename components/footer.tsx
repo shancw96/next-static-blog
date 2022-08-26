@@ -1,11 +1,11 @@
 import Container from './container'
-import { Center } from '@chakra-ui/react'
+import { Center, Text } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
     <Center>
       <Container>
-        Made By Shancw
+        <Text textColor={'gray.600'}>✨Made By ShanCW✨</Text>
       </Container>
     </Center>
   )

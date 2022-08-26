@@ -10,6 +10,7 @@ import {
   HStack,
   useMediaQuery,
   VStack,
+  Text
 } from "@chakra-ui/react";
 import { StoreContext } from "../lib/store";
 import { useContext, useEffect, useMemo, useState } from "react";
@@ -45,10 +46,12 @@ const Index = ({ allPosts }: Props) => {
   const pagedPosts = useMemo(() => {
     return filteredPost.slice(pNum * pageSize, (pNum + 1) * pageSize);
   }, [pNum, pageSize, filteredPost]);
+  const totalPage = useMemo(() => {
+    return Math.ceil(filteredPost.length / pageSize)
+  }, [filteredPost, pageSize]);
   const handlePageClick = (type) => {
-    if (type === "next") setPNum((prev) => prev + 1);
-    if (type === "previous") setPNum((prev) => prev - 1);
-    window.scrollTo(0, 0);
+    setPNum(prev => type === "next" ? prev + 1 : prev - 1);
+    // window.scrollTo(0, 0);
     ``;
   };
 
@@ -80,8 +83,9 @@ const Index = ({ allPosts }: Props) => {
         ))}
       </VStack>
       <HStack w={"100%"} justifyContent="space-between" px="40">
-        <Button onClick={() => handlePageClick("previous")}>上一页</Button>
-        <Button onClick={() => handlePageClick("next")}>下一页</Button>
+        <Button disabled={pNum === 0}  onClick={() => handlePageClick("previous")}>上一页</Button>
+        <Text>{pNum + 1} / {totalPage}</Text>
+        <Button disabled={pNum + 1 >= totalPage} onClick={() => pNum + 1 < totalPage && handlePageClick("next")}>下一页</Button>
       </HStack>
     </Layout>
   );

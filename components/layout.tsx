@@ -20,8 +20,7 @@ const Layout = ({ children }: Props) => {
   
   const [isPortable] = useMediaQuery("(min-width: 1280px)");
   const [isOpen, setIsOpen] = useState(isPortable);
-  return (
-    <ThemeContext.Provider value={{ isPortable }}>
+  return <ThemeContext.Provider value={{ isPortable }}>
       <Meta />
       <Box pos="relative">
         <Box
@@ -30,7 +29,6 @@ const Layout = ({ children }: Props) => {
         >
           {children}
         </Box>
-        (
           <>
             <Drawer visible={isOpen}>
               <Category />
@@ -46,11 +44,9 @@ const Layout = ({ children }: Props) => {
               onClick={() => setIsOpen((prev) => !prev)}
             />
           </>
-        )
       </Box>
       <Footer />
     </ThemeContext.Provider>
-  );
 };
 
 export default Layout;
