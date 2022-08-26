@@ -51,7 +51,7 @@ const Index = ({ allPosts }: Props) => {
   }, [filteredPost, pageSize]);
   const handlePageClick = (type) => {
     setPNum(prev => type === "next" ? prev + 1 : prev - 1);
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     ``;
   };
 
