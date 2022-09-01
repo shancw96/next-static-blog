@@ -3,7 +3,7 @@ title: Vue3 reactivity 解析
 categories: [前端]
 tags: [implement, vue]
 toc: true
-date: 2021/2/20
+date: 2022/8/31
 ---
 
 ## Vue3 响应式流程
@@ -14,7 +14,7 @@ date: 2021/2/20
 3. 对响应式数据进行 set 操作触发 trigger 操作，执行对应的 effect 列表
 
 数据结构：
-<img src="data-structure.jpeg" />
+![IMG_3F473D1649D5-1](http://serial.limiaomiao.site:8089/public/uploads/IMG_3F473D1649D5-1.jpeg)
 
 ## 代码实现
 
@@ -35,7 +35,10 @@ function reactive(target) {
 }
 ```
 
-get 操作：主要为依赖收集，触发 track 功能
+get 操作：
+
+1. 使用Reflect.get 不触发Proxy 的情况下，获取原本数据
+2. 执行track方法，如果位于effect 函数内的get操作，则进行依赖收集，依赖收集的数据结构如文章开头图片所示
 
 ```js
 let targetMap = new WeakMap();
@@ -72,7 +75,11 @@ function track(object, key) {
 }
 ```
 
-set 操作：触发副作用函数列表
+set 操作：
+
+1. 使用Reflect.set 对当前值进行设置
+
+2. 对 get 操作收集的effect进行触发
 
 ```js
 function set(target, key, value, receiver) {
@@ -112,6 +119,10 @@ function trigger(target, key) {
 
 > effect 是副作用函数，与 vue2 的 Watcher 功能相同，主要为双向绑定触发后执行的函数
 
+1. effect 在创建时候会执行一次。位于其内部的值会进行依赖收集。
+2. effect 在执行的时候，会被标记为全局唯一的activeEffect，在执行完后，标记清楚。
+3. effect 在创建后，又返回值，返回值为当前的effect。可手动触发
+
 ```js
 activeEffect = undefined;
 function effect(fn) {
@@ -133,4 +144,4 @@ function effect(fn) {
 }
 ```
 
-完整代码:[✈️ 传送门](https://github.com/shancw96/tech-basis/blob/master/sourceCode_implement/Vue3/reactivity/index.js)
+完整代码:[✈️ 传送门](https://github.com/shancw96/tech-basis/blob/master/implement/Vue3/reactivity/index.js)

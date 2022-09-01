@@ -28,8 +28,6 @@ data: {
 }
 ```
 
-<img src="data-structure.png" />
-
 ### [code](https://github.com/shancw96/tech-basis/blob/master/sourceCode_implement/Vue2/reactivity.ts)
 
 ```js

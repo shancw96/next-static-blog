@@ -33,7 +33,7 @@ const app = createApp({
 ## nextTick 的原理
 
 **浏览器只会在一个 task 结束的最后进行一次渲染**, 浏览器的 eventloop 如下图所示:
-<img src="eventloop.jpeg">
+![image-20220829155348048](/Users/wushangcheng/Pictures/Typora/image-20220829155348048.png)
 
 图中可知，执行顺序为：`microTask` > `UI render` > `macroTask`
 

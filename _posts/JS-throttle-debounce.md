@@ -3,7 +3,7 @@ title: debounce & throttle
 categories: [前端]
 tags: [implement]
 toc: true
-date: 2021/1/11
+date: 2022/8/31
 ---
 
 ## 请实现一下防抖和节流
@@ -38,15 +38,22 @@ function debounce(func, wait) {
 // 只有当上一次调用的时间 与 现在时间的差值 超过了设定的时间 才会再次调用
 function throttle(func, interval) {
   let lastTimeStamp = 0;
-  return function () {
+  let timer = null
+  return function (...args) {
+    clearTimeout(timer);
     let curDate = Date.now();
     const diff = curDate - lastTimeStamp;
-    if (diff > interval) {
-      func.apply(this, arguments);
+    if (curDate - lastTimeStamp > interval) {
+      func.apply(this, args);
       lastTimeStamp = curDate;
+    } else {
+      timer = setTimeout(() => {
+        func.apply(this, args)
+      }, interval)
     }
   };
 }
+
 ```
 
 ##### requestAnimationFrame 实现
