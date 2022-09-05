@@ -18,7 +18,7 @@ date: 2022/8/31
 3. 对响应式数据进行 set 操作触发 trigger 操作，执行对应的 effect 列表
 
 数据结构：
-![IMG_3F473D1649D5-1](http://serial.limiaomiao.site:8089/public/uploads/IMG_3F473D1649D5-1.jpeg)
+![IMG_9E3CC1F500FB-1](http://serial.limiaomiao.site:8089/public/uploads/IMG_9E3CC1F500FB-1.jpeg)
 
 ## 代码实现
 
