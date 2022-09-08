@@ -1,16 +1,15 @@
 import { Box, Text } from "@chakra-ui/react";
-import { useState } from "react";
 
 type Props = {
   children: React.ReactNode;
   visible?: boolean;
 };
-export function Drawer({ children, visible = true }: Props) {
+export function Drawer({ children, visible=false }: Props) {
   
   return (
     <Box
       pos="fixed"
-      w={visible ? "350px" : "0"}
+      w={"350px"}
       opacity={visible ? 1 : 0}
       top="0"
       right="0"

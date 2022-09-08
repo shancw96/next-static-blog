@@ -22,6 +22,7 @@ const Post = ({ post, allPosts }: Props) => {
   const [isPortable] = useMediaQuery("(min-width: 1280px)");
   useEffect(() => {
     dispatch({ type: StoreActionType.SET_POSTS, payload: allPosts });
+    dispatch({ type: StoreActionType.SET_DISPLAY_POSTS, payload: allPosts });
   }, []);
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />

@@ -4,7 +4,7 @@ import { memo, useCallback } from "react";
 interface Props {
   title: string
   handleClick?: Function
-  count?: number
+  count?: number | string
   isActive?: boolean
 }
 function ArticleTag({ title, handleClick , count, isActive = false}: Props) {

@@ -16,7 +16,6 @@ import { StoreContext } from "../lib/store";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { selectFilteredPosts, StoreActionType } from "../lib/store/reducer";
 import AboutAuthor from "../components/AboutAuthor";
-import { SearchSuggestion } from "../components/SearchSuggest";
 import { useSelector } from "../lib/store/useSelector";
 import { useRouter } from "next/router";
 
@@ -36,7 +35,8 @@ const Index = ({ allPosts }: Props) => {
           })
         )
       : allPosts;
-    dispatch({ type: StoreActionType.SET_POSTS, payload: filterPosts });
+    dispatch({ type: StoreActionType.SET_DISPLAY_POSTS, payload: filterPosts });
+    dispatch({ type: StoreActionType.SET_POSTS, payload: allPosts });
   }, [router]);
 
   const filteredPost = useSelector(selectFilteredPosts);
@@ -61,10 +61,9 @@ const Index = ({ allPosts }: Props) => {
         <title>ShanCW tech blog</title>
         <meta name="google-site-verification" content="9gDU7WGc85oUydwbHiOODfTPuUeHhd9Frgxl1ye7UTc" />
       </Head>
-      {!isPortable && <SearchSuggestion documents={allPosts} />}
       <AboutAuthor py="10" title={"shancw"} description={"deeper is better"} />
       <VStack
-        w={isPortable ? "60%" : "100%"}
+        w={"60%"}
         mx={isPortable ? "auto" : "2"}
         spacing={"10"}
       >
