@@ -63,7 +63,7 @@ const Index = ({ allPosts }: Props) => {
       </Head>
       <AboutAuthor py="10" title={"shancw"} description={"deeper is better"} />
       <VStack
-        w={"60%"}
+        w={isPortable ? "60%" : "95%"}
         mx={isPortable ? "auto" : "2"}
         spacing={"10"}
       >

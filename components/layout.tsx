@@ -56,8 +56,9 @@ const Layout = ({ children }: Props) => {
             onClick={() => setIsOpen((prev) => !prev)}
           />
         </>
+        <Footer isOpen={isOpen} />
       </Box>
-      <Footer />
+      
     </ThemeContext.Provider>
 };
 
