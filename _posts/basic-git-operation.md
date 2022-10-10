@@ -3,7 +3,7 @@ title: git 操作
 categories: [工程化]
 tags: [git]
 toc: true
-date: 2020/7/3
+date: 2022/10/10
 ---
 
 ## remote 分支操作
@@ -76,12 +76,12 @@ git reset --hard head^ 不保留代码，恢复成上一个 commit 版本代码
 git reset --soft head^ 保留代码，恢复成上一个 commit
 ```
 
-## 使用 amend + push -f 实现远程分支 commit 的追加[2021/2/24]
+## 使用 amend + push -f 实现远程分支 commit 的追加
 
 1. git commit --amend // 提交一次追加代码
 2. git push origin [仓库名称] -f // -f 强制推送
 
-## git rebase 与 git merge 区别 [2021/2/24]
+## git rebase 与 git merge 区别
 
 **git rebase 作用**: 在多人开发的时候维护 git 树的干净整洁，方便回滚迭代
 **git rebase 的原理**
@@ -93,4 +93,17 @@ git reset --soft head^ 保留代码，恢复成上一个 commit
 
 **git rebase 缺陷**
 git rebase 和 git merge 都能够实现合并代码的功能，但是 git rebase 不推荐在公共分支上进行操作，因为会出现不同开发人员之间的提交记录不一致的情况，如图
-<img src="git-rebase.png" alt="git rebase 缺陷"/>
+![image-20221010113758991](http://serial.limiaomiao.site:8089/public/uploads/image-20221010113758991.png)
+
+### github使用token认证方式提交
+
+git remote set-url origin https://**<githubtoken>**@github.com/**<username>**/**<repositoryname>**.git
+
+
+
+githubtoken的创建:
+
+User -> setting -> developer settings
+
+![image-20221010113636677](http://serial.limiaomiao.site:8089/public/uploads/image-20221010113636677.png)
+
