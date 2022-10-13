@@ -12,6 +12,8 @@ date: 2022/10/13
 
 通过银行 App 示例解释 UML 用例图
 
+[b站链接](https://www.bilibili.com/video/BV1Bz4y1Z7ZV/)
+
 ### System
 
 银行 App 应用，天蓝色外框表示。
