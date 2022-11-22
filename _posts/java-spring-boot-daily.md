@@ -8,12 +8,6 @@ date: 2022/11/9
 
 个人开发笔记，从新手角度，发现问题，记录知识。最终会归档为文章
 
-TODO: 
-
-1. liquibase addForeignKey onDelete="CASCADE" 主从表设置错误的话，删除触发的效果
-2. @JsonSerialize注解学习
-3. Lombok的`@Accessor`注解学习
-
 <!-- more -->
 
 ## Table of Content
@@ -121,7 +115,7 @@ public class ArticleServiceTest {
 | Propagation.NESTED       | 和 Propagation.REQUIRED 效果一样。                           |
 | Propagation.REQUIRES_NEW | 重新创建一个新的事务，如果当前存在事务，暂停当前的事务。     |
 
-
+### 
 
 ### Liquibase 配置外键的方式：
 
@@ -162,6 +156,7 @@ public class ArticleServiceTest {
    	<changeSet id="20221121172000-2" author="shancw">
        <createTable tableName="comment" remarks="评论表">
          <column name="id" type="bigint" remarks="评论表id" />
+         <column name="article_id" type="bigint" remarks="文章表id" />
        </createTable>
    	</changeset>
    </databaseChangeLog>
@@ -183,12 +178,12 @@ public class ArticleServiceTest {
 
    `referencedTableName`: 从表名
 
-   onDelete: 当触发删除操作时，需要执行的操作。可选项`CASCADE`, `SET NULL`, `SET DEFAULT`, `RESTRICT`, `NO ACTION`。
+   
 
    ```xml
    <databaseChangeLog ...>
    	<changeSet id="20221121172000-3">
-     	<addForeignKeyConstraint baseColumnNames="id"
+     	<addForeignKeyConstraint baseColumnNames="article_id"
                                 baseTableName="comment"
                                 constraintName="fk_comment_article_id"
                                 referencedColumnNames="id"
@@ -198,8 +193,116 @@ public class ArticleServiceTest {
    </databaseChangeLog>
    ```
 
+### Liquidate 一对多设置级联删
+
+接上文，如果直接删除article，sql会报错，因为存在外键约束。
+
+解决办法：为comment 设置级联删除，当删除文章表one，自动删除评论表many
+
+修改 `addForeignKeyConstraint` 增加 `onDelete="CASCADE"`
+
+>  `onDelete`: 当触发删除操作时，需要执行的操作。可选项`CASCADE`, `SET NULL`, `SET DEFAULT`, `RESTRICT`, `NO ACTION`。
+
+```diff
+<databaseChangeLog ...>
+	<changeSet id="20221121172000-3">
+  	<addForeignKeyConstraint baseColumnNames="id"
+                             baseTableName="comment"
+                             constraintName="fk_comment_article_id"
+                             referencedColumnNames="id"
+                             referencedTableName="article"
++														 onDelete="CASCADE"
+    />
+  </changeSet>
+</databaseChangeLog>
+```
+
+comment 表生成的DDL为（倒数第二行）:
+
+```sql
+  CONSTRAINT `fk_comment_article_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE CASCADE
+```
+
+完整DDL
+
+```sql
+CREATE TABLE `comment` (
+  `id` bigint NOT NULL,
+  `article_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_comment_article_id` (`article_id`),
+  CONSTRAINT `fk_comment_article_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='修改日期';
+```
+
+
+
+
+
 ### @JsonSerialize
 
-## Lombok
+@JsonSerialize 会在当前类被序列化时候，调用 using 指定的class，将当前annotation 标注的字段进行想要的操作。
 
-### `@Accessor`
+
+
+例1：`ToStringSerializer.class` 解决和前端交互时 java long. -> js number 精度丢失 
+
+将Long 类型的id在序列化时，转换成 String类型
+
+```java
+class Example {
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long projectId;
+}
+```
+
+例2: 自定义class 作为using  将时间转换成秒
+
+```java
+/** 订单创建时间 */
+@JsonSerialize(using = DateToLongSerializer.class)
+private Date createTime;
+```
+
+```java
+public class DateToLongSerializer extends JsonSerializer<Date> {
+    @Override
+    public void serialize(Date date, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        jsonGenerator.writeNumber(date.getTime() / 1000);
+    }
+}
+```
+
+
+
+### mybatis collection 嵌套
+
+![image-20221122155656655](http://serial.limiaomiao.site:8089/public/uploads/image-20221122155656655.png)
+
+info 1-------->n fileLog 1-------->n files
+
+通过left join 将 info fileLog file关联起来，得到如下表结构
+
+| infoId | info 相关字段 | fileLogId | fileLog相关字段 | fileId | file相关字段 |
+| ------ | ------------- | --------- | --------------- | ------ | ------------ |
+| 1      | ...           | a         | ...             | 1a-1   | ...          |
+| 1      | ...           | b         | ...             | 1b-2   | ...          |
+| 2      | ...           | c         | ...             | 2c-1   | ...          |
+| 2      | ...           | d         | ...             | 2c-d   |              |
+
+需要的格式为 infoVM:
+
+```java
+class InfoVM {
+  Info info;
+  List<FileLog> fileLogs
+}
+
+class FileLog {
+  ...
+  List<File> files
+}
+```
+
+注意：resultMap需要唯一id来进行不同collection分组，如果resultMap不提供，则会组装失败。
+
