@@ -8,6 +8,10 @@ date: 2022/11/9
 
 个人开发笔记，从新手角度，发现问题，记录知识。最终会归档为文章
 
+TODO:
+
++ @Resource 注解使用及原理
+
 <!-- more -->
 
 ## Table of Content
