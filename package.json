@@ -23,6 +23,7 @@
     "react-collapse": "^5.1.1",
     "react-dom": "18.1.0",
     "react-markdown": "^8.0.3",
+    "react-modal-image": "^2.6.0",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-raw": "^6.1.1",

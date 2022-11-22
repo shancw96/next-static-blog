@@ -11,7 +11,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { pojoaque as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
 // import { prism as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { synthwave84 as style } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import markdownStyle from "../lib/markdown-styles.module.scss";
+import ModalImage from "react-modal-image";
 import githubStyle from "../lib/github-styles.module.scss";
 type Props = {
   content: string;
@@ -40,6 +40,12 @@ const PostBody = ({ content }: Props) => {
             <code {...props}>{children}</code>
           );
         },
+        img: image => <ModalImage 
+          small={image.src}
+          large={image.src}
+          alt={image.alt}
+          hideZoom={false}
+        />
       }}
     />
   );
