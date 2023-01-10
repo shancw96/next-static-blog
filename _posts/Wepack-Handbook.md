@@ -51,7 +51,7 @@ plugin: 在**bundle**生成之后，操作**chunk**或 **bundle**，对其进行
 
 plugin and Loader workflow:
 
-![Plugin and Loader WorkFlow](http://serial.limiaomiao.site:8089/public/uploads/P7hTM.png)
+![Plugin and Loader WorkFlow](https://pic.limiaomiao.site:8443/public/uploads/P7hTM.png)
 
 ## Asset Management (loaders)
 

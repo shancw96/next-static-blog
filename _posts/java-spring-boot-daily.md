@@ -10,13 +10,11 @@ date: 2022/11/9
 
 TODO:
 
-+ @Resource 注解使用及原理
+- @Resource 注解使用及原理
 
 <!-- more -->
 
 ## Table of Content
-
-
 
 ## Spring Boot 开发相关
 
@@ -32,13 +30,11 @@ TODO:
 </dependency>
 ```
 
-
-
 所有测试代码需要放在 `src/test/java`目录下,推荐和`src/main/java` 下结构保持一致。
 
-比如对`src/main/java` 下 com.demo.ArticleService进行测试, 那么测试用例位置为  `src/test/java`下 com.demo.ArticleService
+比如对`src/main/java` 下 com.demo.ArticleService 进行测试, 那么测试用例位置为 `src/test/java`下 com.demo.ArticleService
 
-对ArticleService 进行测试：
+对 ArticleService 进行测试：
 
 ```java
 package com.fawkes.rtcms;
@@ -79,15 +75,13 @@ public class ArticleServiceTest {
 
 **注解解释：**
 
-`@SpringBootTest`：获取启动类，加载配置，寻找主配置启动类（被 @SpringBootApplication 注解的） `@RunWith(SpringRunner.class)`：让JUnit运行Spring的测试环境,获得Spring环境的上下文的支持
-
-
+`@SpringBootTest`：获取启动类，加载配置，寻找主配置启动类（被 @SpringBootApplication 注解的） `@RunWith(SpringRunner.class)`：让 JUnit 运行 Spring 的测试环境,获得 Spring 环境的上下文的支持
 
 更多参考：https://cloud.tencent.com/developer/article/1779117
 
 ### `@Transaction`使用
 
-[文章: 你真的会用@Transaction吗？](https://juejin.cn/post/6844904179341737991)
+[文章: 你真的会用@Transaction 吗？](https://juejin.cn/post/6844904179341737991)
 
 背景：
 
@@ -95,35 +89,33 @@ public class ArticleServiceTest {
 
 `@Transaction`的使用：
 
-**使用位置**：类：当作用在类上，表示该类的所有public方法都配置相同的事务属性。方法：方法的事务会覆盖类的事务配置信息
+**使用位置**：类：当作用在类上，表示该类的所有 public 方法都配置相同的事务属性。方法：方法的事务会覆盖类的事务配置信息
 
-**timeout属性：** 事务的超时时间，默认值为-1。如果超过该时间限制但事务还没有完成，则自动回滚事务。
+**timeout 属性：** 事务的超时时间，默认值为-1。如果超过该时间限制但事务还没有完成，则自动回滚事务。
 
-**readOnly属性 ：** 指定事务是否为只读事务，默认值为false；为了忽略那些不需要事务的方法，比如读取数据，可以设置 read-only 为 true。
+**readOnly 属性 ：** 指定事务是否为只读事务，默认值为 false；为了忽略那些不需要事务的方法，比如读取数据，可以设置 read-only 为 true。
 
-**rollbackFor属性 ：** 用于指定能够触发事务回滚的异常类型，可以指定多个异常类型。
+**rollbackFor 属性 ：** 用于指定能够触发事务回滚的异常类型，可以指定多个异常类型。
 
-默认不设置rollbackFor属性，会对 RuntimeException 类型和 Error 类型的才进行回滚。如果在事务中抛出其他类型的异常，却希望 Spring 能够回滚事务，就需要指定 rollbackFor 属性。
+默认不设置 rollbackFor 属性，会对 RuntimeException 类型和 Error 类型的才进行回滚。如果在事务中抛出其他类型的异常，却希望 Spring 能够回滚事务，就需要指定 rollbackFor 属性。
 
-![image-20221118113050548](http://serial.limiaomiao.site:8089/public/uploads/image-20221118113050548.png)
+![image-20221118113050548](https://pic.limiaomiao.site:8443/public/uploads/image-20221118113050548.png)
 
-**noRollbackFor属性：** 这个就是和上面相反的了，抛出指定的异常类型，不回滚事务，也可以指定多个异常类型。
+**noRollbackFor 属性：** 这个就是和上面相反的了，抛出指定的异常类型，不回滚事务，也可以指定多个异常类型。
 
+**propagation 属性：**
 
-
-**propagation属性：**
-
-| 传播行为                 | 说明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
+| 传播行为                 | 说明                                                                     |
+| ------------------------ | ------------------------------------------------------------------------ |
 | Propagation.REQUIRED     | 如果当前存在事务，则加入该事务，如果当前不存在事务，则创建一个新的事务。 |
-| Propagation.NESTED       | 和 Propagation.REQUIRED 效果一样。                           |
-| Propagation.REQUIRES_NEW | 重新创建一个新的事务，如果当前存在事务，暂停当前的事务。     |
+| Propagation.NESTED       | 和 Propagation.REQUIRED 效果一样。                                       |
+| Propagation.REQUIRES_NEW | 重新创建一个新的事务，如果当前存在事务，暂停当前的事务。                 |
 
-### 
+###
 
 ### Liquibase 配置外键的方式：
 
-涉及到的Liquibase 标签知识：
+涉及到的 Liquibase 标签知识：
 
 假设有文章表和评论表，文章. 1------n 评论
 
@@ -138,8 +130,6 @@ public class ArticleServiceTest {
 
 </databaseChangeLog>
 ```
-
-
 
 1. 创建表 user xml
 
@@ -168,21 +158,17 @@ public class ArticleServiceTest {
 
 3. 在评论表上增加文章表的外键
 
-   [liquibase: addForeignKeyConstraint文档介绍](https://docs.liquibase.com/change-types/add-foreign-key-constraint.html)
-
-   
+   [liquibase: addForeignKeyConstraint 文档介绍](https://docs.liquibase.com/change-types/add-foreign-key-constraint.html)
 
    `baseColumnNames`：主表的主键字段名
 
    `baseTableName`: 主表名
 
-   `constraintName`: 外键名称，格式一般为  `fk_主表_从表_id`
+   `constraintName`: 外键名称，格式一般为 `fk_主表_从表_id`
 
    `referencedColumnNames`: 从表的主键字段名
 
    `referencedTableName`: 从表名
-
-   
 
    ```xml
    <databaseChangeLog ...>
@@ -199,13 +185,13 @@ public class ArticleServiceTest {
 
 ### Liquidate 一对多设置级联删
 
-接上文，如果直接删除article，sql会报错，因为存在外键约束。
+接上文，如果直接删除 article，sql 会报错，因为存在外键约束。
 
-解决办法：为comment 设置级联删除，当删除文章表one，自动删除评论表many
+解决办法：为 comment 设置级联删除，当删除文章表 one，自动删除评论表 many
 
 修改 `addForeignKeyConstraint` 增加 `onDelete="CASCADE"`
 
->  `onDelete`: 当触发删除操作时，需要执行的操作。可选项`CASCADE`, `SET NULL`, `SET DEFAULT`, `RESTRICT`, `NO ACTION`。
+> `onDelete`: 当触发删除操作时，需要执行的操作。可选项`CASCADE`, `SET NULL`, `SET DEFAULT`, `RESTRICT`, `NO ACTION`。
 
 ```diff
 <databaseChangeLog ...>
@@ -221,13 +207,13 @@ public class ArticleServiceTest {
 </databaseChangeLog>
 ```
 
-comment 表生成的DDL为（倒数第二行）:
+comment 表生成的 DDL 为（倒数第二行）:
 
 ```sql
   CONSTRAINT `fk_comment_article_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE CASCADE
 ```
 
-完整DDL
+完整 DDL
 
 ```sql
 CREATE TABLE `comment` (
@@ -239,19 +225,13 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='修改日期';
 ```
 
-
-
-
-
 ### @JsonSerialize
 
-@JsonSerialize 会在当前类被序列化时候，调用 using 指定的class，将当前annotation 标注的字段进行想要的操作。
+@JsonSerialize 会在当前类被序列化时候，调用 using 指定的 class，将当前 annotation 标注的字段进行想要的操作。
 
+例 1：`ToStringSerializer.class` 解决和前端交互时 java long. -> js number 精度丢失
 
-
-例1：`ToStringSerializer.class` 解决和前端交互时 java long. -> js number 精度丢失 
-
-将Long 类型的id在序列化时，转换成 String类型
+将 Long 类型的 id 在序列化时，转换成 String 类型
 
 ```java
 class Example {
@@ -260,7 +240,7 @@ class Example {
 }
 ```
 
-例2: 自定义class 作为using  将时间转换成秒
+例 2: 自定义 class 作为 using 将时间转换成秒
 
 ```java
 /** 订单创建时间 */
@@ -277,22 +257,20 @@ public class DateToLongSerializer extends JsonSerializer<Date> {
 }
 ```
 
-
-
 ### mybatis collection 嵌套
 
-![image-20221122155656655](http://serial.limiaomiao.site:8089/public/uploads/image-20221122155656655.png)
+![image-20221122155656655](https://pic.limiaomiao.site:8443/public/uploads/image-20221122155656655.png)
 
 info 1-------->n fileLog 1-------->n files
 
-通过left join 将 info fileLog file关联起来，得到如下表结构
+通过 left join 将 info fileLog file 关联起来，得到如下表结构
 
-| infoId | info 相关字段 | fileLogId | fileLog相关字段 | fileId | file相关字段 |
-| ------ | ------------- | --------- | --------------- | ------ | ------------ |
-| 1      | ...           | a         | ...             | 1a-1   | ...          |
-| 1      | ...           | b         | ...             | 1b-2   | ...          |
-| 2      | ...           | c         | ...             | 2c-1   | ...          |
-| 2      | ...           | d         | ...             | 2c-d   |              |
+| infoId | info 相关字段 | fileLogId | fileLog 相关字段 | fileId | file 相关字段 |
+| ------ | ------------- | --------- | ---------------- | ------ | ------------- |
+| 1      | ...           | a         | ...              | 1a-1   | ...           |
+| 1      | ...           | b         | ...              | 1b-2   | ...           |
+| 2      | ...           | c         | ...              | 2c-1   | ...           |
+| 2      | ...           | d         | ...              | 2c-d   |               |
 
 需要的格式为 infoVM:
 
@@ -308,5 +286,4 @@ class FileLog {
 }
 ```
 
-注意：resultMap需要唯一id来进行不同collection分组，如果resultMap不提供，则会组装失败。
-
+注意：resultMap 需要唯一 id 来进行不同 collection 分组，如果 resultMap 不提供，则会组装失败。

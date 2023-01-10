@@ -93,17 +93,14 @@ git reset --soft head^ 保留代码，恢复成上一个 commit
 
 **git rebase 缺陷**
 git rebase 和 git merge 都能够实现合并代码的功能，但是 git rebase 不推荐在公共分支上进行操作，因为会出现不同开发人员之间的提交记录不一致的情况，如图
-![image-20221010113758991](http://serial.limiaomiao.site:8089/public/uploads/image-20221010113758991.png)
+![image-20221010113758991](https://pic.limiaomiao.site:8443/public/uploads/image-20221010113758991.png)
 
-### github使用token认证方式提交
+### github 使用 token 认证方式提交
 
 git remote set-url origin https://**<githubtoken>**@github.com/**<username>**/**<repositoryname>**.git
 
-
-
-githubtoken的创建:
+githubtoken 的创建:
 
 User -> setting -> developer settings
 
-![image-20221010113636677](http://serial.limiaomiao.site:8089/public/uploads/image-20221010113636677.png)
-
+![image-20221010113636677](https://pic.limiaomiao.site:8443/public/uploads/image-20221010113636677.png)

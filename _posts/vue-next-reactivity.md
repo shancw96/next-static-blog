@@ -6,7 +6,7 @@ toc: true
 date: 2022/8/31
 ---
 
-这篇文章对vue3 的响应式部分源码进行了分析，去除了很多细节处理，精简出能概括核心思想的代码
+这篇文章对 vue3 的响应式部分源码进行了分析，去除了很多细节处理，精简出能概括核心思想的代码
 
 <!--more-->
 
@@ -18,7 +18,7 @@ date: 2022/8/31
 3. 对响应式数据进行 set 操作触发 trigger 操作，执行对应的 effect 列表
 
 数据结构：
-![IMG_9E3CC1F500FB-1](http://serial.limiaomiao.site:8089/public/uploads/IMG_9E3CC1F500FB-1.jpeg)
+![IMG_9E3CC1F500FB-1](https://pic.limiaomiao.site:8443/public/uploads/IMG_9E3CC1F500FB-1.jpeg)
 
 ## 代码实现
 
@@ -41,8 +41,8 @@ function reactive(target) {
 
 get 操作：
 
-1. 使用Reflect.get 不触发Proxy 的情况下，获取原本数据
-2. 执行track方法，如果位于effect 函数内的get操作，则进行依赖收集，依赖收集的数据结构如文章开头图片所示
+1. 使用 Reflect.get 不触发 Proxy 的情况下，获取原本数据
+2. 执行 track 方法，如果位于 effect 函数内的 get 操作，则进行依赖收集，依赖收集的数据结构如文章开头图片所示
 
 ```js
 let targetMap = new WeakMap();
@@ -81,9 +81,9 @@ function track(object, key) {
 
 set 操作：
 
-1. 使用Reflect.set 对当前值进行设置
+1. 使用 Reflect.set 对当前值进行设置
 
-2. 对 get 操作收集的effect进行触发
+2. 对 get 操作收集的 effect 进行触发
 
 ```js
 function set(target, key, value, receiver) {
@@ -124,8 +124,8 @@ function trigger(target, key) {
 > effect 是副作用函数，与 vue2 的 Watcher 功能相同，主要为双向绑定触发后执行的函数
 
 1. effect 在创建时候会执行一次。位于其内部的值会进行依赖收集。
-2. effect 在执行的时候，会被标记为全局唯一的activeEffect，在执行完后，标记清楚。
-3. effect 在创建后，又返回值，返回值为当前的effect。可手动触发
+2. effect 在执行的时候，会被标记为全局唯一的 activeEffect，在执行完后，标记清楚。
+3. effect 在创建后，又返回值，返回值为当前的 effect。可手动触发
 
 ```js
 activeEffect = undefined;

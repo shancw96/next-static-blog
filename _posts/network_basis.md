@@ -12,7 +12,7 @@ date: 2022/10/21
 
 ## IP 与子网掩码
 
-![image-20221025143230493](http://serial.limiaomiao.site:8089/public/uploads/image-20221025143230493.png)
+![image-20221025143230493](https://pic.limiaomiao.site:8443/public/uploads/image-20221025143230493.png)
 
 ### IP 的构成：
 
@@ -22,11 +22,11 @@ IP 地址是一串 32 比特的数字,按照 8 比特 (1 字节) 为一组分成
 
 1. 全部为 0 代表整个子网
 
-   ![image-20221025144143942](http://serial.limiaomiao.site:8089/public/uploads/image-20221025144143942.png)
+   ![image-20221025144143942](https://pic.limiaomiao.site:8443/public/uploads/image-20221025144143942.png)
 
 2. 全部为 1 代表向子网上所有设备发送包,即广播
 
-   ![image-20221025144215971](http://serial.limiaomiao.site:8089/public/uploads/image-20221025144215971.png)
+   ![image-20221025144215971](https://pic.limiaomiao.site:8443/public/uploads/image-20221025144215971.png)
 
 ### 子网掩码
 
@@ -55,7 +55,7 @@ DNS 服务器中的所有信息都是按照域名以分层次的结构来保存�
 
 这样,我们就可以通过上级 DNS 服务器查询出下级 DNS 服务器的 IP 地址,也就可以向下级 DNS 服务器发送查询请求了
 
-![image-20221025144806417](http://serial.limiaomiao.site:8089/public/uploads/image-20221025144806417.png)
+![image-20221025144806417](https://pic.limiaomiao.site:8443/public/uploads/image-20221025144806417.png)
 
 假设我们要查询 www.lab.glasscom.com 这台 Web 服务器的相关信息
 
@@ -70,11 +70,11 @@ DNS 服务器中的所有信息都是按照域名以分层次的结构来保存�
 
 Socket 中文为套接字，通过协议栈收发数据的流程如图所示：
 
-![image-20221025145406107](http://serial.limiaomiao.site:8089/public/uploads/image-20221025145406107.png)
+![image-20221025145406107](https://pic.limiaomiao.site:8443/public/uploads/image-20221025145406107.png)
 
 1. 创建 Socket 套接字 （准备）
 2. 将管道连接到服务端的套接字上（连接）
 3. 收发数据（收发）
 4. 断开管道并删除套接字（断开）
 
-![image-20221025145637355](http://serial.limiaomiao.site:8089/public/uploads/image-20221025145637355.png)
+![image-20221025145637355](https://pic.limiaomiao.site:8443/public/uploads/image-20221025145637355.png)

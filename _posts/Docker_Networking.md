@@ -81,7 +81,7 @@ docker 的网络驱动有几种模式可选：
 
    默认的桥接网络，容器间只能通过 ip 进行访问，或者使用废弃的--link 操作。而用户定义的桥接网络，容器间可以通过容器名直接访问
 
-   ![image-20221009164409071](http://serial.limiaomiao.site:8089/public/uploads/image-20221009164409071.png)
+   ![image-20221009164409071](https://pic.limiaomiao.site:8443/public/uploads/image-20221009164409071.png)
 
 2. 用户自定义的桥接网络提供了更好的隔离
 
@@ -156,7 +156,7 @@ docker network create my-net
 
 又称**网桥**，一種網路裝置，負責網路橋接（network bridging）。橋接器将[网络](https://zh.wikipedia.org/wiki/网络)的多个[网段](https://zh.wikipedia.org/wiki/网段)在[数据链路层](https://zh.wikipedia.org/wiki/数据链路层)（[OSI 模型](https://zh.wikipedia.org/wiki/OSI模型)第 2 层）连接起来（即桥接）。 -- wiki
 
-![20210708112655899](http://serial.limiaomiao.site:8089/public/uploads/20210708112655899.png)
+![20210708112655899](https://pic.limiaomiao.site:8443/public/uploads/20210708112655899.png)
 
 ### Gateway
 

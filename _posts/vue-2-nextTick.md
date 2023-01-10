@@ -41,7 +41,7 @@ const app = createApp({
 **浏览器只会在一个 task 结束的最后进行一次渲染**
 
 浏览器的 eventloop 如下图所示:
-![eventloop.jpeg](http://serial.limiaomiao.site:8089/public/uploads/eventloop-20220905101300156.jpeg)
+![eventloop.jpeg](https://pic.limiaomiao.site:8443/public/uploads/eventloop-20220905101300156.jpeg)
 
 有如下代码，请分析执行顺序
 
@@ -73,7 +73,7 @@ console.log(7);
 
 分析：
 
-![img](http://serial.limiaomiao.site:8089/public/uploads/408483-20190913122454767-2038890726-20220905155941199.png)
+![img](https://pic.limiaomiao.site:8443/public/uploads/408483-20190913122454767-2038890726-20220905155941199.png)
 
 - **macrotask（宏任务）** 在浏览器端，其可以理解为该任务执行完后，在下一个 macrotask 执行开始前，浏览器可以进行页面渲染。触发 macrotask 任务的操作包括：
   - **script(整体代码)**
@@ -89,7 +89,7 @@ console.log(7);
 
 如下代码为 nextTick(cb) ，cb 具体调用的过程
 
-![img](http://serial.limiaomiao.site:8089/public/uploads/1620.png)
+![img](https://pic.limiaomiao.site:8443/public/uploads/1620.png)
 
 上述代码尝试使用原生的`Promise.then`、`MutationObserver`和`setImmediate`，如果上述三个都不支持，那么最后使用 setTimeout；
 

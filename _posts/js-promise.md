@@ -23,7 +23,7 @@ Promise 属于微观任务。那么什么是微观任务，与之相对的宏观
 - 宏观任务的队列就相当于事件循环。事件循环：`MacroTask1, ... , MacroTaskN`。
 - 一个宏观任务包含了微观任务队列。MacroTask1: MicroTask1, ... , MicroTaskN
   <!-- ![JS 宏观任务与微观任务](promise.png) -->
-  ![image-20220824170139482](http://serial.limiaomiao.site:8089/public/uploads/image-20220824170139482.png)
+  ![image-20220824170139482](https://pic.limiaomiao.site:8443/public/uploads/image-20220824170139482.png)
 
 ## Promise 要求
 

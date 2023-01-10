@@ -6,11 +6,11 @@ toc: true
 date: 2020/8/12
 ---
 
-这篇文章介绍了http 缓存的相关知识。涉及强缓存 协商缓存两种
+这篇文章介绍了 http 缓存的相关知识。涉及强缓存 协商缓存两种
 
 <!--more-->
 
-![mindSet](http://serial.limiaomiao.site:8089/public/uploads/mindSet.png)
+![mindSet](https://pic.limiaomiao.site:8443/public/uploads/mindSet.png)
 
 ## 强缓存
 
@@ -52,7 +52,7 @@ cache-control: max-age=3600, s-maxage=31536000
 - **no-cache：**绕开浏览器缓存（每次发起请求不会询问浏览器缓存），而是直接向服务器确认该缓存是够过期。
 
 利用 cache control 提供的字段可以实现一套完整的缓存策略
-![cache-control-strategy](http://serial.limiaomiao.site:8089/public/uploads/cache-control-strategy.png)
+![cache-control-strategy](https://pic.limiaomiao.site:8443/public/uploads/cache-control-strategy.png)
 
 ## 协商缓存
 

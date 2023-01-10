@@ -24,7 +24,7 @@ date: 2022/9/5
 
 ​ 域名解析成公网 IP 地址
 
-![preload](http://serial.limiaomiao.site:8089/public/uploads/eb1b6b726e6cbe7c04beb6b7885202e4.png)
+![preload](https://pic.limiaomiao.site:8443/public/uploads/eb1b6b726e6cbe7c04beb6b7885202e4.png)
 
 ## 建立 TCP 连接
 
@@ -53,7 +53,7 @@ date: 2022/9/5
 
 ### 三次握手
 
-![4609ddfac3194cf88f1d6809de06ea33](http://serial.limiaomiao.site:8089/public/uploads/4609ddfac3194cf88f1d6809de06ea33.png)
+![4609ddfac3194cf88f1d6809de06ea33](https://pic.limiaomiao.site:8443/public/uploads/4609ddfac3194cf88f1d6809de06ea33.png)
 
 ## 发送 HTTP / HTTPS 请求（建立 TLS 连接）服务器响应请求
 
@@ -65,7 +65,7 @@ date: 2022/9/5
 
 ## **浏览器**解析**渲染**页面
 
-![img](http://serial.limiaomiao.site:8089/public/uploads/1620-20220905161044511.png)
+![img](https://pic.limiaomiao.site:8443/public/uploads/1620-20220905161044511.png)
 
 1. 处理 HTML 标记并构建 DOM 树。
 2. 处理 CSS 标记并构建 CSSOM 树。
@@ -77,4 +77,4 @@ date: 2022/9/5
 
 ### 四次挥手
 
-![6d632984cfb0496f9e65eb8ab21ccc8c](http://serial.limiaomiao.site:8089/public/uploads/6d632984cfb0496f9e65eb8ab21ccc8c.png)
+![6d632984cfb0496f9e65eb8ab21ccc8c](https://pic.limiaomiao.site:8443/public/uploads/6d632984cfb0496f9e65eb8ab21ccc8c.png)

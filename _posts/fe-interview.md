@@ -133,7 +133,7 @@ shancw.color === "black"; // -> true
 
 每次调用构造函数创建一个新的实例，这个实例内部的[[prototype]]指针就会被赋值给构造函数的原型对象。这个属性是内置属性，外部无法获取。但是 Firefox,Safari,Chrome 会在每个对象上暴露 `__proto__`，通过这个属性，可以访问到对象的原型
 
-![image-20220420200850513](http://serial.limiaomiao.site:8089/public/uploads/image-20220420200850513.png)
+![image-20220420200850513](https://pic.limiaomiao.site:8443/public/uploads/image-20220420200850513.png)
 
 ### 执行上下文和作用域
 
@@ -458,35 +458,33 @@ let result3 = it.next();
 
   - Object.defineProperity VS proxy
 
-
-
 ## TS
 
-+ TS 中有哪些类型（基础）
+- TS 中有哪些类型（基础）
 
-  + 内置：包括数字(number)，字符串(string)，布尔值(boolean)，无效(void)，空值(null)和未定义(undefined)。
+  - 内置：包括数字(number)，字符串(string)，布尔值(boolean)，无效(void)，空值(null)和未定义(undefined)。
 
-  + 用户定义的：它包括枚举(enums)，类(classes)，接口(interfaces)，数组(arrays)和元组(tuple)。
+  - 用户定义的：它包括枚举(enums)，类(classes)，接口(interfaces)，数组(arrays)和元组(tuple)。
 
-+ **对 TypeScript 类中成员的 public、private、protected、readonly 修饰符的理解？**（基础）
+- **对 TypeScript 类中成员的 public、private、protected、readonly 修饰符的理解？**（基础）
 
   `public`: 成员都默认为`public`，被此限定符修饰的成员是可以被外部访问；
-   `private`: 被此限定符修饰的成员是只可以被类的内部访问；
-   `protected`: 被此限定符修饰的成员是只可以被类的内部以及类的子类访问;
-   `readonly`: 关键字将属性设置为只读的。 只读属性必须在声明时或构造函数里被初始化。
+  `private`: 被此限定符修饰的成员是只可以被类的内部访问；
+  `protected`: 被此限定符修饰的成员是只可以被类的内部以及类的子类访问;
+  `readonly`: 关键字将属性设置为只读的。 只读属性必须在声明时或构造函数里被初始化。
 
-+ 什么是范性，可以用来做什么
+- 什么是范性，可以用来做什么
 
-  + 范性一般用于抽象接口，抽象类上，抽象函数上，可以实现复用的效果。
+  - 范性一般用于抽象接口，抽象类上，抽象函数上，可以实现复用的效果。
 
-  + 在前端实际项目中，比如React项目，我们可以抽象通用的组件，比如list列表抽象为范型组件，在外部控制list 的元素类型，比如`List<Pserson>`，`List<Article>`
+  - 在前端实际项目中，比如 React 项目，我们可以抽象通用的组件，比如 list 列表抽象为范型组件，在外部控制 list 的元素类型，比如`List<Pserson>`，`List<Article>`
 
 ## CSS
 
-+ Flex 布局有哪些常用属性
+- Flex 布局有哪些常用属性
 
 ## 工具
 
 ### Axios
 
-+ Axios的拦截器是否有了解过？有哪些应用场景？
+- Axios 的拦截器是否有了解过？有哪些应用场景？

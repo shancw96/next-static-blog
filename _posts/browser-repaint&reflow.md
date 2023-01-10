@@ -8,7 +8,7 @@ date: 2022/9/7
 
 这篇文章是[dom_performance_reflow_repaint](https://gist.github.com/faressoft/36cdd64faae21ed22948b458e6bf04d5)的部分翻译，介绍了重绘与重流的相关知识。
 
-![Rendering](http://serial.limiaomiao.site:8089/public/uploads/68747470733a2f2f692e696d6775722e636f6d2f64384b785a53772e706e67.png)
+![Rendering](https://pic.limiaomiao.site:8443/public/uploads/68747470733a2f2f692e696d6775722e636f6d2f64384b785a53772e706e67.png)
 
 重绘：某些元素的外观被改变，例如：元素的填充颜色
 

@@ -146,7 +146,7 @@ type Age = Person["age"]; //-> type Age = number
 
 using `number` to get the type of an array’s elements
 
-![image-20220504223237103](http://serial.limiaomiao.site:8089/public/uploads/image-20220504223237103.png)
+![image-20220504223237103](https://pic.limiaomiao.site:8443/public/uploads/image-20220504223237103.png)
 
 ##### [typeof](https://www.typescriptlang.org/docs/handbook/2/typeof-types.html#handbook-content)
 
@@ -187,10 +187,10 @@ type First<T extends unknown[]> = T["length"] extends 0 ? T[0] : never;
   ```typescript
   let vAny: any = 10; // We can assign anything to any
   let vUnknown: unknown = 10; // We can assign anything to unknown just like any
-  
+
   let s1: string = vAny; // Any is assignable to anything
   let s2: string = vUnknown; // Invalid; we can't assign vUnknown to any other type (without an explicit assertion)
-  
+
   vAny.method(); // Ok; anything goes with any
   vUnknown.method(); // Not ok; we don't know anything about this variable
   ```
@@ -199,12 +199,14 @@ type First<T extends unknown[]> = T["length"] extends 0 ? T[0] : never;
 
 Implement a generic `Last<T>` that takes an Array `T` and returns its last element.
 
-学习解构赋值在范性中配合infer的使用
+学习解构赋值在范性中配合 infer 的使用
 
 参考此处：[inferring within conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#inferring-within-conditional-types)
 
 ```typescript
-type Last<T extends any[]> = T extends [...infer arr, infer tail] ? tail : never
+type Last<T extends any[]> = T extends [...infer arr, infer tail]
+  ? tail
+  : never;
 ```
 
 ### [MyAwaited](https://github.com/type-challenges/type-challenges/blob/main/questions/00189-easy-awaited/README.md)
@@ -332,5 +334,5 @@ type cases = [
   - [Version2: UtilType Record](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)
 
     ```typescript
-    Record<ProgressOutlookType, FormProps<ProgressOutlookSaveDTO>>
+    Record<ProgressOutlookType, FormProps<ProgressOutlookSaveDTO>>;
     ```

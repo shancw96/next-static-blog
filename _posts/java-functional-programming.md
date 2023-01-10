@@ -90,7 +90,7 @@ public class FPDemo {
 ## map
 
 map 可以实现 List 的类型转换, 如`[1, 2, 3]` -> `["1", "2", "3"]`
-![image-20220808160900489](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160900489.png)
+![image-20220808160900489](https://pic.limiaomiao.site:8443/public/uploads/image-20220808160900489.png)
 
 ```java
 List.of(1, 2, 3).stream()
@@ -104,7 +104,7 @@ List.of(1, 2, 3).stream()
 
 将几个小 List 整合成一个大的 List, 可以理解为展平（flat）操作
 
-![image-20220808160818460](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160818460.png)
+![image-20220808160818460](https://pic.limiaomiao.site:8443/public/uploads/image-20220808160818460.png)
 
 ```java
 Stream.of(asList(1, 2, 3), asList(4, 5, 6))
@@ -115,7 +115,7 @@ Stream.of(asList(1, 2, 3), asList(4, 5, 6))
 
 ## filter
 
-![image-20220808160844217](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160844217.png)
+![image-20220808160844217](https://pic.limiaomiao.site:8443/public/uploads/image-20220808160844217.png)
 
 过滤操作，将 list 中无用的元素过滤掉
 
@@ -161,12 +161,12 @@ String tempRet = List.of(1, 2, 3)
 此场景主要出现在 parallel 流操作中
 
 1. 第一个参数，创建容器
-   ![image-20220808160142369](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160142369.png)
+   ![image-20220808160142369](https://pic.limiaomiao.site:8443/public/uploads/image-20220808160142369.png)
 2. 第二个参数，负责累加
-   ![image-20220808160212126](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160212126.png)
+   ![image-20220808160212126](https://pic.limiaomiao.site:8443/public/uploads/image-20220808160212126.png)
 
 3. 第三个参数，负责容器间的组合方式
-   ![image-20220808160229607](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160229607.png)
+   ![image-20220808160229607](https://pic.limiaomiao.site:8443/public/uploads/image-20220808160229607.png)
 
 # 高阶函数使用
 
@@ -226,7 +226,7 @@ System.out.println(curried.apply("e").apply(27).apply(18)); // -> e2718
 ## 什么是 monad？
 
 monad 的完全定义对我来说是个哲学话题。。。。说的简单点，monad 可以实现将你传入的类型，包裹起来，然后返回给你一个新的容器类型，
-![image-20220808160707570](http://serial.limiaomiao.site:8089/public/uploads/image-20220808160707570.png)
+![image-20220808160707570](https://pic.limiaomiao.site:8443/public/uploads/image-20220808160707570.png)
 
 ## Optional monad 处理 nullPointerException
 
