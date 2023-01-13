@@ -7,7 +7,7 @@ type Props = {
 }
 export default function AboutAuthor({title, description, ...rest} : Props & StackProps) {
   const router = useRouter();
-  const activeTag = router.query?.tag as string;
+  // const activeTag = router.query?.tag as string;
   const cancelTag = () => {
     router.push('/');
   }
