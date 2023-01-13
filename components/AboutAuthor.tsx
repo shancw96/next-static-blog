@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { Box, Center, HStack, Link, StackProps, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
-import Tag from './Tag';
 type Props = {
   title: string;
   description: string;
