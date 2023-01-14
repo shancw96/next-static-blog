@@ -2,7 +2,7 @@
 
 # 各类配置信息
 remote_download_path="public/uploads/"  # 下载默认的路径
-remote_upload_path="uploads/" # 上传默认的路径
+remote_upload_path="uploads/" # 上传默认的路径aaa
 base_url="https://pic.limiaomiao.site:8443/" # 对象存储绑定的域名
 upload_url="https://pic.limiaomiao.site:8443/"
 # 上传图片
