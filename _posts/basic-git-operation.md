@@ -99,6 +99,8 @@ git rebase 和 git merge 都能够实现合并代码的功能，但是 git rebas
 
 git remote set-url origin https://**<githubtoken>**@github.com/**<username>**/**<repositoryname>**.git
 
+git remote set-url 你的remote别名 https://你的token@你的仓库地址
+
 githubtoken 的创建:
 
 User -> setting -> developer settings

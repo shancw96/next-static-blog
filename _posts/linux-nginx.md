@@ -66,7 +66,7 @@ Context:	location, if in location, limit_except
     location /name/ {
       proxy_pass http://127.0.0.1/remote/;
     }
-
+  
     /name/shancw -> http://127.0.0.1/remote/shancw
   ```
 
@@ -76,7 +76,7 @@ Context:	location, if in location, limit_except
   location /name/ {
     proxy_pass http://127.0.0.1/;
   }
-
+  
   /name/test.html -> http://127.0.0.1/test.html
   ```
 
@@ -86,7 +86,7 @@ Context:	location, if in location, limit_except
   location /name/ {
     proxy_pass http://127.0.0.1/extra;
   }
-
+  
   /name/test.html -> http://127.0.0.1/extratest.html
   ```
 
@@ -96,7 +96,7 @@ Context:	location, if in location, limit_except
   location /name/ {
     proxy_pass http://127.0.0.1;
   }
-
+  
   /name/shancw -> http://127.0.0.1/name/shancw
   ```
 
@@ -174,3 +174,32 @@ http {
   }
 }
 ```
+
+## Refused to display 'https://xxx' in a frame because it set 'X-Frame-Options' to 'deny'
+
+设置 X-Frame-Options HTTP 头部为 "SAMEORIGIN"，允许同源网页在 frame 中加载。
+
+```diff
+server {
+  listen 443 ssl;
+  server_name your.domain.com;
+
+  client_max_body_size 2048M;
+
+  location / {
++   add_header X-Frame-Options "SAMEORIGIN";
+    proxy_pass http://localhost:8886;
+  }
+}
+
+```
+
+X-Frame-Options HTTP 头部有三个可能的值：
+
+- DENY：浏览器将不允许在任何情况下在 frame 中加载网页。
+- SAMEORIGIN：浏览器将只允许同源网页在 frame 中加载。
+- ALLOW-FROM uri：浏览器将只允许来自特定域名的网页在 frame 中加载。
+
+如果你想让你的网页在其他域名的frame中显示,可以使用 ALLOW-FROM,指定允许的域名。
+
+`add_header X-Frame-Options "ALLOW-FROM https://example.com"`
