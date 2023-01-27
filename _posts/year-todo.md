@@ -17,7 +17,7 @@ date: 2099/1/13
 
     - ws 站点消息推送
 
-- canvas 无线桌布笔记本功能（参考 draw.io的 whiteboard）
+- canvas 无线桌布笔记本功能（参考 draw.io 的 whiteboard）
 
   - 支持常规图形的拖拽，放大缩小
   - 支持背景网格化
@@ -27,19 +27,20 @@ date: 2099/1/13
 
 - yolov5 的图像识别项目
 
-  - 增加GUI，可视化调参
+  - <del>增加 GUI，可视化调参</del> 使用配置文件的方式，进行参数调整
 
   - 产品化
 
-    - 项目增加卡密付费功能，支付宝/微信付款后，自动更新卡密。卡密的形式，考虑使用常规token认证的方式
+    - 项目增加卡密付费功能，支付宝/微信付款后，自动更新卡密。卡密的形式，考虑使用常规 token 认证的方式
     - 增加配套的发货平台（spring boot + vue），考虑使用已有开源项目，并二次开发
-
-    
-
-
-
+    - 推广形式：前期 qq，后期 discord
 
 ideas:
 
-+ <del>Onlyoffice 能否封装成自定义的协同office 工具（数据存储到数据库中，可自定义解析）</del>
+- yolov5 自动打金
+- csgo buff 饰品价格爬取与自动倒卖
 
+  - https://github.com/wolverinn/igxe-c5-buff-csgo-skins-sale-data-catch
+  - https://github.com/puppylpg/oddish
+
+- <del>Onlyoffice 能否封装成自定义的协同 office 工具（数据存储到数据库中，可自定义解析）</del>
