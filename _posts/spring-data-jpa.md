@@ -25,7 +25,7 @@ JPA 是一种规范，它有几种实现方式: [Hibernate](https://hibernate.or
 所有的实体类必须定义一个主键，并且有一个<u>无参数的构造方法</u>或者不是 final 修饰的类。
 
 > [hibernate 为什么持久化类时必须提供一个不带参数的默认构造函数](https://www.cnblogs.com/langjunnan/p/6035188.html)
-> 因为 hibernate 框架会调用这个默认构造方法来构造实例对象。。
+> 因为 hibernate 框架会调用这个默认构造方法来构造实例对象。
 > 即 Class 类的 newInstance 方法 这个方法就是通过调用默认构造方法来创建实例对象的 ，
 > 另外再提醒一点，如果你没有提供任何构造方法，虚拟机会自动提供默认构造方法（无参构造器），
 > 但是如果你提供了其他有参数的构造方法的话，虚拟机就不再为你提供默认构造方法，这时必须手动把无参构造器写在代码里
@@ -38,11 +38,27 @@ JPA 是一种规范，它有几种实现方式: [Hibernate](https://hibernate.or
 
 Entity 实体的字段将会保存在数据库中，JPA 既可以使用你的实例变量也可以使用对应的 getters，setters 来访问字段。但是不能混合两种方式，如果要使用 setter 和 getter 方法，则 Java 类必须遵循 Java Bean 命名约定。JPA 默认会保留实体的所有字段，**如果想要某一个字段不被保存，那么需要通过`@Transient` 标记**
 
-| annotation      | description                         |
-| --------------- | ----------------------------------- |
-| @Id             | 实体的唯一标识                      |
-| @GeneratedValue | 与实体的 ID 一起使用，表示自动生成. |
-| @Transient      | Field will not be saved in database |
+| annotation      | description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| @Id             | 实体的唯一标识                                               |
+| @GeneratedValue | 与实体的 ID 一起使用，主键的自动生成方式                     |
+| @Transient      | 表示该属性并非一个到数据库表的字段的映射,ORM框架将忽略该属性. |
+
+**`@GeneratedValue` 可选值**
+
+1. `GenerationType.AUTO`: 由JPA自动选择生成策略，一般使用的是数据库的IDENTITY或SEQUENCE。
+2. `GenerationType.IDENTITY`: 数据库生成主键，通过数据库的IDENTITY自增长。
+3. `GenerationType.SEQUENCE`: 使用数据库的SEQUENCE生成主键。
+4. `GenerationType.TABLE`: 通过数据库表维护一个主键生成器来生成主键。
+
+> SEQUENCE 和 IDENTITY 的区别：
+>
+> 1. 实现方式：SEQUENCE是通过数据库SEQUENCE对象生成主键，而IDENTITY是通过数据库自动增长生成主键。
+> 2. 数据库支持：**SEQUENCE是通用的**，几乎所有数据库都支持；而IDENTITY只有少数数据库支持，如MySQL、SQL Server等。
+> 3. **并发性：SEQUENCE在多线程环境下生成的主键是独立的，不存在重复主键的情况；而IDENTITY在多线程环境下存在重复主键的风险**。
+> 4. 性能：SEQUENCE的生成速度比IDENTITY慢，但是更稳定
+
+
 
 ### CrudRepository Interface
 

@@ -1,16 +1,20 @@
 ---
-title: MySQL-handbook
+title: SQL-handbook
 categories: [数据库]
-tags: [database, mysql]
+tags: [database, mysql,mybatis]
 toc: true
-date: 2022/8/1
+date: 2023/3/7
 ---
 
-这篇文章覆盖了 mysql 的常用知识，比如常用的语句 Select,Where ，常用的操作符 IN,BETWEEN, AND...常用的连接如 Inner Join, Self Join, 等等等。。。
+这篇文章覆盖了 mysql，mybatis 的常用知识。
 
-这篇文章是[YouTube: MySQL Tutorial for Beginner - Programming with Mosh](https://www.youtube.com/watch?v=7S_tz1z_5bA&list=WL&index=6&t=1881s&ab_channel=ProgrammingwithMosh)的笔记
+比如常用的语句 Select,Where ，常用的操作符 IN,BETWEEN, AND...常用的连接如 Inner Join, Self Join, 等等等。。。
 
 <!-- more -->
+
+## Table of Content
+
+
 
 # The SELECT Clause
 
@@ -43,23 +47,6 @@ select state from customer;
 ```sql
 select distinct state from customer;
 -- VA CO FL TX
-```
-
-## 练习：
-
-返回数据库中所有的商品并标上打 9 折的价格
-
-```sql
--- return all products
--- name
--- unit price
--- new price
-
-select
-  name,
-  unit_price,
-  unit_price * 1.1 as new_price
-from product
 ```
 
 # The WHERE Clause
@@ -583,7 +570,7 @@ values ('Arche')
 
 UPDATE 语句
 
-## Updating a Single Row
+## 单行更新
 
 ```sql
 update invoices
@@ -591,7 +578,7 @@ set payment_total = invoice_total * 0.5, payment_data = due_date
 where client_id = 3; -- 更新client_id 为3 或者是4
 ```
 
-## Updating Multiple Rows
+## 多行更新
 
 IN 操作符号
 
@@ -601,7 +588,7 @@ set payment_total = invoice_total * 0.5, payment_data = due_date
 where client_id in (3, 4); -- 更新client_id 为3 或者是4
 ```
 
-# Using Subqueries in Updates
+## Using Subqueries in Updates
 
 子表达式
 
@@ -615,7 +602,36 @@ where client_id in (
 )
 ```
 
-# Deleting Rows
+# CASE WHEN 语句实现SQL 条件判断
+
+CASE WHEN 关键字是 SQL 中的控制流语句，允许在查询中执行条件逻辑。它提供了一种基于特定条件执行操作的方法，类似于“if-then-else”结构。基本语法是：
+
+```sql
+CASE
+    WHEN condition THEN result
+    WHEN condition THEN result
+    ...
+    ELSE result
+END
+```
+
+CASE WHEN在SELECT中的使用
+
+```sql
+SELECT column1,
+       column2,
+       CASE
+           WHEN column3 = 'A' THEN 'Alpha'
+           WHEN column3 = 'B' THEN 'Beta'
+           ELSE 'Other'
+       END AS column3_alias
+FROM table_name;
+
+```
+
+
+
+# Delete
 
 ```sql
 delete from invoices
@@ -624,3 +640,86 @@ where client_id in (
   where name = "Myworks"
 )
 ```
+
+
+
+# 实际应用
+
+## batchUpdate - mysql, mybatis plus
+
+```text
+id|user_id|goods_id|expired_time       |update_time        |create_time        |
+--+-------+--------+-------------------+-------------------+-------------------+
+10|      1|      12|2023-04-07 22:56:21|2023-02-06 14:56:19|2023-02-06 14:56:19|
+11|      1|      13|2023-05-07 22:55:28|2023-02-06 14:55:27|2023-02-06 14:55:27|
+12|      1|      14|2023-05-07 22:55:28|2023-02-06 14:55:27|2023-02-06 14:55:27|
+13|      1|      15|2023-05-07 22:55:28|2023-02-06 14:55:27|2023-02-06 14:55:27|
+```
+
+有表如上`t_user_goods_time`，需要批量更新表中 expired_time，修改规则为：
+
+```
+10 - 2023-04-07 22:56:21
+11 - 2023-04-08 22:56:21
+12 - 2023-04-09 22:56:21
+13 - 2023-04-10 22:56:21
+```
+
+```sql
+UPDATE t_user_goods_time
+SET expired_time = 
+    CASE id
+        WHEN 10 THEN '2023-04-07 22:56:21'
+        WHEN 11 THEN '2023-04-08 22:56:21'
+        WHEN 12 THEN '2023-04-09 22:56:21'
+        WHEN 13 THEN '2023-04-10 22:56:21'
+    END
+WHERE id IN (10, 11, 12, 13)
+```
+
+在mybatis 中，可以通过以下方式实现
+
+mapper
+
+```xml
+<update id="batchUpdateExpiredTime">
+    UPDATE goods_remain_time
+    SET expired_time =
+    <foreach collection="gtList" item="item" index="index">
+        CASE id
+        <foreach collection="gtList" item="item" index="index">
+            WHEN #{item.id} THEN #{item.expiredTime}
+        </foreach>
+        END
+    </foreach>
+    WHERE id IN
+    <foreach collection="gtList" item="item" index="index" open="(" separator="," close=")">
+        #{item.id}
+    </foreach>
+</update>
+```
+
+dao
+
+```java
+void batchUpdateExpiredTime(@Param("gtList") List<GoodsRemainTimeEntity> gtList);
+```
+
+
+
+Mybatis-plus 借助IServiceImpl.saveBatch简单实现:
+
+```java
+@Service
+public class GoodsService extends ServiceImpl<xxxDao, xxxEntity> {
+	
+		xxxUpdate() {
+			List<xxxEntity> xxxList = ...
+			updateBatchById(xxxList);
+		}
+}
+```
+
+存在问题：将整个实体都更新了一遍
+
+参考链接： [Mybatis-plus doc: Service CRUD 接口](https://baomidou.com/pages/49cc81/#service-crud-%E6%8E%A5%E5%8F%A3)
