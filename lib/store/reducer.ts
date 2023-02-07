@@ -66,8 +66,7 @@ export const selectFilteredPosts = (state: Store) => {
     // top 为置顶字段，置顶的文章排在前面
     .sort((post1, post2) => {
       const top1 = post1.top ?? 0
-      const top2 = post2.top ?? 0
-      if (top1 !== top2) console.log(top1, top2);      
+      const top2 = post2.top ?? 0  
       return top1 > top2 ? -1 : 1
     })
 }

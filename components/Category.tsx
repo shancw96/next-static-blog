@@ -43,7 +43,6 @@ export function Category() {
         [category]: !dict[category]
       }))
     }
-    console.log(expandDict);
   }
 
   const onSelectCategory = (category: string) => {

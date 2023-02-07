@@ -40,6 +40,7 @@ const Post = ({ post, allPosts }: Props) => {
               tags={post.tags}
               title={post.title}
               date={post.date}
+              updated={post.updated}
             />
             <PostBody content={post.content} />
           </>

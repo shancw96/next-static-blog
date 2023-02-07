@@ -74,7 +74,6 @@ export function getAllPosts(fields: (keyof PostType)[] = []) {
     .sort((post1, post2) => {
       const top1 = post1.top ?? 0
       const top2 = post2.top ?? 0
-      console.log(top1, top2);      
       return top1 > top2 ? -1 : 1
     })
   

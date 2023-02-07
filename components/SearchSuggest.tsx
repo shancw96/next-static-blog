@@ -34,10 +34,12 @@ function SearchOption({ content, title, slug }: PostType) {
 }
 
 export function SearchSuggestion({ documents }: Props) {
+  // @ts-ignore
   const [index, setIndex] = useState<FlexSearch.Index>();
   const [options, setOptions] = useState<PostType[]>([]);
   const inputRef = useRef<HTMLInputElement>();
   useEffect(() => {
+    // @ts-ignore
     const index = new FlexSearch.Index({
       tokenize: "reverse",
       cache: true,
