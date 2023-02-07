@@ -111,7 +111,7 @@ public class ArticleServiceTest {
 | Propagation.NESTED       | 和 Propagation.REQUIRED 效果一样。                                       |
 | Propagation.REQUIRES_NEW | 重新创建一个新的事务，如果当前存在事务，暂停当前的事务。                 |
 
-###
+
 
 ### Liquibase 配置外键的方式：
 
@@ -287,3 +287,54 @@ class FileLog {
 ```
 
 注意：resultMap 需要唯一 id 来进行不同 collection 分组，如果 resultMap 不提供，则会组装失败。
+
+
+
+### @Schedule 定时任务
+
+在 Spring Boot 中实现定时任务可以通过使用 `@Scheduled` 注解来实现。首先，在启动类中添加 `@EnableScheduling` 注解开启定时任务功能，然后在需要执行定时任务的方法上添加 `@Scheduled` 注解，并配置定时任务的执行周期。
+
+示例代码：
+
+```java
+@EnableScheduling
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+
+    @Scheduled(fixedRate = 1000)
+    public void scheduleTaskWithFixedRate() {
+        // ...
+    }
+}
+```
+
+在这个示例代码中，定时任务 `scheduleTaskWithFixedRate` 每隔 1000 毫秒执行一次。
+
+
+
+在每天的0点执行：
+
+```java
+@Scheduled(cron = "0 0 0 * * ?")
+public void scheduleTaskWithCronExpression() {
+    // ...
+}
+```
+
+
+
+cron表达式的格式：
+
+```
+秒 分 小时 一个月中的第几天 月 一周中的第几天 年 (选填)
+```
+
+比如：
+
++ 每天的 23：59:59执行：`"59 59 23 * * ?`
+
++ 每月的第15天 23:59:59执行：`59 59 23 15 * ?`
+
