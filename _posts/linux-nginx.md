@@ -6,6 +6,12 @@ toc: true
 date: 2021/3/1
 ---
 
+nginx 相关配置
+
+<!-- more -->
+
+## Table of Content
+
 ## 启动，停止，重载 配置文件
 
 - stop -- 强制关闭
@@ -66,7 +72,7 @@ Context:	location, if in location, limit_except
     location /name/ {
       proxy_pass http://127.0.0.1/remote/;
     }
-  
+
     /name/shancw -> http://127.0.0.1/remote/shancw
   ```
 
@@ -76,7 +82,7 @@ Context:	location, if in location, limit_except
   location /name/ {
     proxy_pass http://127.0.0.1/;
   }
-  
+
   /name/test.html -> http://127.0.0.1/test.html
   ```
 
@@ -86,7 +92,7 @@ Context:	location, if in location, limit_except
   location /name/ {
     proxy_pass http://127.0.0.1/extra;
   }
-  
+
   /name/test.html -> http://127.0.0.1/extratest.html
   ```
 
@@ -96,7 +102,7 @@ Context:	location, if in location, limit_except
   location /name/ {
     proxy_pass http://127.0.0.1;
   }
-  
+
   /name/shancw -> http://127.0.0.1/name/shancw
   ```
 
@@ -200,6 +206,6 @@ X-Frame-Options HTTP 头部有三个可能的值：
 - SAMEORIGIN：浏览器将只允许同源网页在 frame 中加载。
 - ALLOW-FROM uri：浏览器将只允许来自特定域名的网页在 frame 中加载。
 
-如果你想让你的网页在其他域名的frame中显示,可以使用 ALLOW-FROM,指定允许的域名。
+如果你想让你的网页在其他域名的 frame 中显示,可以使用 ALLOW-FROM,指定允许的域名。
 
 `add_header X-Frame-Options "ALLOW-FROM https://example.com"`

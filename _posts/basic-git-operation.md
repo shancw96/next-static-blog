@@ -6,6 +6,12 @@ toc: true
 date: 2022/10/10
 ---
 
+GIT OPERATION
+
+<!-- more -->
+
+## Table of Content
+
 ## remote 分支操作
 
 ```bash
@@ -99,7 +105,7 @@ git rebase 和 git merge 都能够实现合并代码的功能，但是 git rebas
 
 git remote set-url origin https://**<githubtoken>**@github.com/**<username>**/**<repositoryname>**.git
 
-git remote set-url 你的remote别名 https://你的token@你的仓库地址
+git remote set-url 你的 remote 别名 https://你的 token@你的仓库地址
 
 githubtoken 的创建:
 

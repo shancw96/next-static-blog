@@ -4,15 +4,30 @@ import Tag from "./Tag";
 type Props = {
   title: string;
   date: string;
+  updated: string;
   tags: string[];
   slug: string;
 };
-const PostHeader = ({ title, date, tags, slug }: Props) => {
+const PostHeader = ({ title, date, tags, slug, updated }: Props) => {
   const router = useRouter();
 
   return (
     <VStack py="10">
       <Heading>{title}</Heading>
+      <HStack>
+        <Text color="GrayText" alignSelf={"flex-end"}>
+          创建：{date}
+        </Text>
+
+        {updated && (
+          <>
+            <Text>|</Text>{" "}
+            <Text color="GrayText" alignSelf={"flex-end"}>
+              更新：{updated}
+            </Text>
+          </>
+        )}
+      </HStack>
       <HStack w="100%" justifyContent={"space-between"}>
         <Text
           cursor={"pointer"}
@@ -25,9 +40,6 @@ const PostHeader = ({ title, date, tags, slug }: Props) => {
             <Tag title={tag} />
           ))}
         </HStack>
-        <Text color="GrayText" alignSelf={"flex-end"}>
-          {date}
-        </Text>
       </HStack>
     </VStack>
   );

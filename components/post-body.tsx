@@ -5,11 +5,6 @@ import toc from "remark-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { dracula as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
-// import { ghcolors as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
-// import { materialDark as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
-// import { pojoaque as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
-// import { prism as style } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { synthwave84 as style } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import ModalImage from "react-modal-image";
 import githubStyle from "../lib/github-styles.module.scss";

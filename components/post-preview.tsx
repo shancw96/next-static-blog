@@ -9,17 +9,18 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import Tag from '../components/Tag'
+import Tag from "../components/Tag";
 import { useTagSelectHook } from "../hooks/useTagSelect";
 type Props = {
   title: string;
   date: string;
+  updated: string;
   excerpt: string;
   slug: string;
   tags: string[];
 };
 
-const PostPreview = ({ title, date, excerpt, slug, tags }: Props) => {
+const PostPreview = ({ title, date, updated, excerpt, slug, tags }: Props) => {
   const [tagList, onSelectTag] = useTagSelectHook();
 
   return (
@@ -32,14 +33,24 @@ const PostPreview = ({ title, date, excerpt, slug, tags }: Props) => {
         </Heading>
         <HStack>
           {tags?.map((tag) => (
-            <Tag 
+            <Tag
               title={tag}
               handleClick={() => onSelectTag(tag)}
-              isActive={!!tagList?.find(item => item === tag)}
+              isActive={!!tagList?.find((item) => item === tag)}
             />
           ))}
         </HStack>
-        <Text color={"GrayText"}>{date}</Text>
+        <HStack>
+          <Text color={"GrayText"}>创建：{date}</Text>
+          {updated && (
+            <>
+              <Text>|</Text>{" "}
+              <Text color="GrayText" alignSelf={"flex-end"}>
+                更新：{updated}
+              </Text>
+            </>
+          )}
+        </HStack>
       </VStack>
       <PostBody content={excerpt} />
     </Box>

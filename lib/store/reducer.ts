@@ -60,7 +60,16 @@ export const selectFilteredPosts = (state: Store) => {
       return state.filterTagList.includes(category);
     })
   }) : state.displayPost;
-  return posts.sort((post1, post2) => (new Date(post1.date) > new Date(post2.date) ? -1 : 1))
+  
+  return posts
+    .sort((post1, post2) => (new Date(post1.updated ?? post1.date) > new Date(post2.updated ?? post2.date) ? -1 : 1))
+    // top 为置顶字段，置顶的文章排在前面
+    .sort((post1, post2) => {
+      const top1 = post1.top ?? 0
+      const top2 = post2.top ?? 0
+      if (top1 !== top2) console.log(top1, top2);      
+      return top1 > top2 ? -1 : 1
+    })
 }
 
 // 获取特定分组下的post的标签集合

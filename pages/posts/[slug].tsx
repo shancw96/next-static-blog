@@ -61,6 +61,8 @@ export async function getStaticProps({ params }: Params) {
   const allPosts = getAllPosts([
     "title",
     "date",
+    'updated',
+    'top',
     "slug",
     "categories",
     "tags",
@@ -70,6 +72,8 @@ export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
+    'updated',
+    'top',
     'slug',
     'content',
     "excerpt",

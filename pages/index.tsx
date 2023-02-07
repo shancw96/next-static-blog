@@ -74,6 +74,7 @@ const Index = ({ allPosts }: Props) => {
               key={post.slug}
               title={post.title}
               date={post.date}
+              updated={post.updated}
               slug={post.slug}
               excerpt={post.excerpt}
             />
@@ -96,6 +97,7 @@ export const getStaticProps = async () => {
   const allPosts = getAllPosts([
     "title",
     "date",
+    "updated",
     "slug",
     "categories",
     "tags",
