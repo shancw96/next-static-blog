@@ -338,3 +338,35 @@ cron表达式的格式：
 
 + 每月的第15天 23:59:59执行：`59 59 23 15 * ?`
 
++ 根据报价表整理出来已完成内容，双方确认是否有异议
+
++ 有异议或未完成功能，甲方明确给到需求的时间
+
++ 甲方的验收流程，我们这儿除了开发完功能还需要准备什么？
+  + 就是我们合同后签的，功能是先开发完的，现在做的这个验收，能用在后续合同付款验收吗。就到时候需不需要再做一次验收？
+
++ 是否有后续计划，二期？
+
+
+
+```
+REPOSITORY                                        TAG                            IMAGE ID            CREATED             SIZE
+fawkes.tencentcloudcr.com/fawkes/sys-form         2.0.0-RELEASE                  e15fb2671aa0        5 months ago        263MB
+fawkes.tencentcloudcr.com/fawkes/sys-bpm          2.0.0-RELEASE                  045da27ddf65        5 months ago        252MB
+fawkes.tencentcloudcr.com/fawkes/sys-system       2.0.0-RELEASE                  110a65895f43        5 months ago        239MB
+nginxdemos/hello                                  latest                         729220f0c1ea        6 months ago        23.6MB
+openjdk                                           8-jre-slim                     85b121affedd        6 months ago        194MB
+fawkes.tencentcloudcr.com/basic/minio             RELEASE.2022-07-26T00-53-03Z   8e56d2760289        6 months ago        220MB
+keking/kkfileview                                 latest                         6771b555ede5        6 months ago        1.6GB
+fawkes.tencentcloudcr.com/fawkes/sys-auth         2.0.0-RELEASE                  a14c57b1d376        7 months ago        479MB
+fawkes.tencentcloudcr.com/fawkes/sys-gateway      2.0.0-RELEASE                  a1aca95dde46        8 months ago        229MB
+fawkes.tencentcloudcr.com/fawkes/sys-msg          2.0.0-RELEASE                  37ec528acc06        9 months ago        253MB
+fawkes.tencentcloudcr.com/fawkes/sys-user         2.0.0-RELEASE                  312a6b0e15c5        9 months ago        471MB
+fawkes.tencentcloudcr.com/fawkes/bpm-designer     2.0.0-RELEASE                  26e525fc3e78        9 months ago        167MB
+fawkes.tencentcloudcr.com/fawkes/central-system   2.0.0-RELEASE                  9621130e7f02        9 months ago        204MB
+fawkes.tencentcloudcr.com/fawkes/sys-storage      2.0.0-RELEASE                  5d79f6c72a23        9 months ago        646MB
+fawkes.tencentcloudcr.com/fawkes/sys-socket       2.0.0-RELEASE                  f71b28c986c1        9 months ago        267MB
+fawkes.tencentcloudcr.com/fawkes/sys-monitor      2.0.0-RELEASE                  599aa66c5f32        9 months ago        286MB
+```
+
+将上述docker image 列表中以 fawkes.tencentcloudcr.com 开头的 image，全部保存到 /root/downloads/fawkes-images 路径

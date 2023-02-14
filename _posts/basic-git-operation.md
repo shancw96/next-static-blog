@@ -12,6 +12,24 @@ GIT OPERATION
 
 ## Table of Content
 
+
+
+## git 一个项目添加多仓库地址的方式
+
+默认情况下，我们会使用origin 作为仓库地址，所以 pull push 操作
+
+`git push origin master / git pull origin master`
+
+现在增加额外的仓库，起名为 private，那么推送到private 就是
+
+`git push private master / git pull private master`
+
+添加额外仓库private的指令:
+
+` git remote add private https://domain:port/repositoryname.git`
+
+**如果想要对private仓库 操作，无论是push pull merge clone，只需要将origin 改成private 即可**
+
 ## remote 分支操作
 
 ```bash
