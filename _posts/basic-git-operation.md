@@ -30,7 +30,9 @@ GIT OPERATION
 
 `git remote add origin https://oauth2:glpat-N3FbZqcdWH6_FZow@gitlab.shancw.net:1234/shancw/smart-admin-web-fork.git`
 
+### gitlab 社区版创建personal access token方式
 
+![screenshot-20230216-233205](https://pic.limiaomiao.site:8443/public/uploads/screenshot-20230216-233205.png)
 
 ## git 一个项目添加多仓库地址的方式
 
