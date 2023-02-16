@@ -14,6 +14,24 @@ GIT OPERATION
 
 
 
+## gitlab oauth2 方式配置仓库
+
+假设有token：`glpat-N3FbZqcdWH6_FZow`
+
+假设有仓库 base：`gitlab.shancw.net:1234/shancw/smart-admin-web-fork.git`
+
+仓库的协议为https
+
+假设给仓库起名为 origin
+
+那么配置仓库的方式为 
+
+`git remote add [仓库名] [仓库协议]://oauth2:[token]@[仓库base]`
+
+`git remote add origin https://oauth2:glpat-N3FbZqcdWH6_FZow@gitlab.shancw.net:1234/shancw/smart-admin-web-fork.git`
+
+
+
 ## git 一个项目添加多仓库地址的方式
 
 默认情况下，我们会使用origin 作为仓库地址，所以 pull push 操作
@@ -28,7 +46,9 @@ GIT OPERATION
 
 ` git remote add private https://domain:port/repositoryname.git`
 
-**如果想要对private仓库 操作，无论是push pull merge clone，只需要将origin 改成private 即可**
+**如果想要对private仓库 操作，无论是push pull merge clone**
+
+**，只需要将origin 改成private 即可**
 
 ## remote 分支操作
 
