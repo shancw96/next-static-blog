@@ -683,13 +683,13 @@ mapper
 
 ```xml
 <update id="batchUpdateExpiredTime">
-    UPDATE goods_remain_time
+    UPDATE t_user_goods_time
     SET expired_time =
-      CASE id
-      <foreach collection="gtList" item="item" index="index">
-          WHEN #{item.id} THEN #{item.expiredTime}
-      </foreach>
-      END
+        CASE id
+        <foreach collection="gtList" item="item" index="index">
+            WHEN #{item.id} THEN #{item.expiredTime}
+        </foreach>
+        END
     WHERE id IN
     <foreach collection="gtList" item="item" index="index" open="(" separator="," close=")">
         #{item.id}

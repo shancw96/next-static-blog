@@ -7,7 +7,9 @@ date: 2022/3/11
 top: 1
 ---
 
-上次更新时间：2022/4/13
+前端面试知识整理
+
+<!-- more -->
 
 # 资源
 
@@ -34,7 +36,7 @@ top: 1
 - [【推荐】yck：前端面试之道](https://juejin.cn/book/6844733763675488269?scrollMenuIndex=1) 17.5k star
 - [木易杨前端进阶](https://muyiy.cn/question/)
 
-<!-- more -->
+
 
 ## JS
 
