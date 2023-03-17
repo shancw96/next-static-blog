@@ -685,13 +685,11 @@ mapper
 <update id="batchUpdateExpiredTime">
     UPDATE goods_remain_time
     SET expired_time =
-    <foreach collection="gtList" item="item" index="index">
-        CASE id
-        <foreach collection="gtList" item="item" index="index">
-            WHEN #{item.id} THEN #{item.expiredTime}
-        </foreach>
-        END
-    </foreach>
+      CASE id
+      <foreach collection="gtList" item="item" index="index">
+          WHEN #{item.id} THEN #{item.expiredTime}
+      </foreach>
+      END
     WHERE id IN
     <foreach collection="gtList" item="item" index="index" open="(" separator="," close=")">
         #{item.id}
